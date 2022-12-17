@@ -81,10 +81,6 @@ label {
     justify-content: space-between;
 }
 
-.double_Content {
-    margin-right: 1.5em;
-}
-
 .aggrement_Container {
     width: 100%;
     display: flex;
@@ -146,35 +142,6 @@ label {
     gap: 10px;
 }
 
-hr {
-    display: flex;
-    width: 100%;
-    border: none;
-    background-color: black;
-    height: 1px;
-}
-
-.img_google {
-    height: 20px;
-    width: 20px;
-}
-
-.btn_sign_google {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: center;
-    gap: 10px;
-    background-color: white;
-    border-radius: 10px;
-    border: solid 1px black;
-}
-
-.google_sign_container {
-    display: flex;
-    width: 100%;
-}
-
-.btn_sign_google > p {
-    font-size: 16px;
+.picture_container {
+    margin-top: 5em;
 }
