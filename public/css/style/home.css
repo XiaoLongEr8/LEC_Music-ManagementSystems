@@ -111,6 +111,10 @@
     font-size: 3.3em;
 }
 
+.song_card_container {
+    display: flex;
+}
+
 .song_card {
     height: 18em;
     width: 12em;
@@ -119,8 +123,9 @@
     flex-direction: column;
     align-items: center;
 
-    margin-top: 1em;
+    margin: 2em 0.5em 2em 0.5em;
     padding: 0.5em;
+
     background-color: #d9d9d9;
 }
 
@@ -134,12 +139,12 @@
     font-size: 1.8em;
 }
 
-.song_author{
+.song_author {
     font-size: 1em;
     font-weight: 400;
 }
 
-.song_timespam{
+.song_timespam {
     font-size: 1.2em;
     font-weight: 500;
 }

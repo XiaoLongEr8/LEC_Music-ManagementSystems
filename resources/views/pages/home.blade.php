@@ -54,14 +54,22 @@
 
         <section class="latestSong_container separated_container">
             <h1 class="latestSong_SecTitle">Latest Song</h1>
-            {{-- Looping this in integration --}}
-            <article class="song_card">
-                {{-- <img src="" alt="Album Cover" class="song_album_img"> --}}
-                <div class="song_album_img"></div>
-                <h1 class="song_title">Song Title</h1>
-                <h6 class="song_author">Song Author</h6>
-                <h5 class="song_timespam">Song spamTime</h5>
-            </article>
+
+            <div class="song_card_container">
+                {{-- Looping this card layout when integration with BE --}}
+                <article class="song_card">
+                    {{-- For integration with BE:
+                    1. Un-comment the img src
+                    2. delete background color in css with class .song_album_img
+                    --}}
+
+                    {{-- <img src="" alt="Album Cover" class="song_album_img"> --}}
+                    <div class="song_album_img"></div>
+                    <h1 class="song_title">Song Title</h1>
+                    <h6 class="song_author">Song Author</h6>
+                    <h5 class="song_timespam">Song spamTime</h5>
+                </article>
+            </div>
         </section>
 
     </main>
