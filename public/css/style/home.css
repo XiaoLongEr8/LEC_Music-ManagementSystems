@@ -7,10 +7,10 @@
 .separated_container {
     margin-top: 3em;
     margin-bottom: 3em;
+    display: flex;
 }
 
 .introduction_container {
-    display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
@@ -30,7 +30,6 @@
 
 .search_container {
     background-color: #d9d9d9;
-    display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
@@ -84,7 +83,6 @@
 }
 
 .compDesc_container {
-    display: flex;
     flex-direction: column;
     padding-left: 7em;
     padding-right: 7em;
@@ -102,7 +100,6 @@
 }
 
 .latestSong_container {
-    display: flex;
     flex-direction: column;
     align-items: center;
 }
@@ -146,5 +143,29 @@
 
 .song_timespam {
     font-size: 1.2em;
+    font-weight: 500;
+}
+
+.leaderboard_container {
+    flex-direction: column;
+    align-items: center;
+}
+
+.leaderboard_SecTitle {
+    font-size: 3.3em;
+}
+
+.leaderboard_table {
+    margin-top: 1em;
+}
+
+.leaderboard_table thead tr th,
+.leaderboard_table tbody tr td {
+    width: 11em;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.leaderboard_table tbody tr td {
     font-weight: 500;
 }

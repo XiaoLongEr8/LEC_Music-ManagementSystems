@@ -72,5 +72,30 @@
             </div>
         </section>
 
+        <section class="leaderboard_container separated_container">
+            <h1 class="leaderboard_SecTitle">Leaderboard</h1>
+            <table class="leaderboard_table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Song Title</th>
+                        <th>Artist</th>
+                        <th>Released Date</th>
+                        <th>Views</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{-- Looping this for load the data --}}
+                    <tr>
+                        <td>1</td>
+                        <td>Bitter Love</td>
+                        <td>Ardhito Pramono</td>
+                        <td>12/10/2019</td>
+                        <td>2,652</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
     </main>
 @endsection
