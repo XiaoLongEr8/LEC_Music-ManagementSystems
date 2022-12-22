@@ -4,7 +4,12 @@
     font-family: "Poppins", sans-serif;
 }
 
-.first_section {
+.separated_container {
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.introduction_container {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -14,22 +19,21 @@
     align-items: center;
 }
 
-.first_section .left_content .main_title {
+.introduction_container .left_content .main_title {
     font-size: 3.3em;
 }
 
-.first_section .left_content .sub_title{
+.introduction_container .left_content .sub_title {
     font-size: 1.3em;
     font-weight: 400;
 }
 
-.second_section {
+.search_container {
     background-color: #d9d9d9;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 1em;
     padding-top: 2em;
     padding-bottom: 2em;
 }
@@ -77,4 +81,65 @@
     border: none;
     color: #898989;
     font-size: large;
+}
+
+.compDesc_container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 7em;
+    padding-right: 7em;
+    align-items: center;
+    text-align: center;
+}
+
+.comdesc_title {
+    font-size: 3.3em;
+}
+
+.comdesc_content {
+    margin-top: 0.8em;
+    font-size: 1.4em;
+}
+
+.latestSong_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.latestSong_SecTitle {
+    font-size: 3.3em;
+}
+
+.song_card {
+    height: 18em;
+    width: 12em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 1em;
+    padding: 0.5em;
+    background-color: #d9d9d9;
+}
+
+.song_album_img {
+    height: 11em;
+    width: 10em;
+    background-color: #767676;
+}
+
+.song_title {
+    font-size: 1.8em;
+}
+
+.song_author{
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.song_timespam{
+    font-size: 1.2em;
+    font-weight: 500;
 }

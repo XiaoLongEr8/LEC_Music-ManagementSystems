@@ -14,7 +14,7 @@
 @section('container')
     <main class="main_container">
 
-        <section class="first_section">
+        <section class="introduction_container separated_container">
             <div class="left_content">
                 <h1 class="main_title">
                     Welcome to <br>
@@ -29,7 +29,7 @@
             </picture>
         </section>
 
-        <section class="second_section">
+        <section class="search_container separated_container">
             <div class="title_section">
                 <h2>Let's Explore the world of Music!</h2>
             </div>
@@ -41,6 +41,27 @@
                 </form>
             </div>
 
+        </section>
+
+        <section class="compDesc_container separated_container">
+            <h2 class="comdesc_title">What is Lyrics-Go?</h2>
+            <p class="comdesc_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel turpis fringilla,
+                pretium quam non,
+                lobortis eros. Cras at ullamcorper purus, vitae vehicula augue. In ac vulputate massa. Aenean sodales, urna
+                ut convallis pellentesque, turpis odio malesuada sem, ac efficitur nulla mi ut nulla. Vestibulum vitae
+                consequat diam, in consectetur sapien.</p>
+        </section>
+
+        <section class="latestSong_container separated_container">
+            <h1 class="latestSong_SecTitle">Latest Song</h1>
+            {{-- Looping this in integration --}}
+            <article class="song_card">
+                {{-- <img src="" alt="Album Cover" class="song_album_img"> --}}
+                <div class="song_album_img"></div>
+                <h1 class="song_title">Song Title</h1>
+                <h6 class="song_author">Song Author</h6>
+                <h5 class="song_timespam">Song spamTime</h5>
+            </article>
         </section>
 
     </main>
