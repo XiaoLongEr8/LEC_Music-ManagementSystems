@@ -14,6 +14,15 @@
     align-items: center;
 }
 
+.first_section .left_content .main_title {
+    font-size: 3.3em;
+}
+
+.first_section .left_content .sub_title{
+    font-size: 1.3em;
+    font-weight: 400;
+}
+
 .second_section {
     background-color: #d9d9d9;
     display: flex;
@@ -23,6 +32,14 @@
     margin-top: 1em;
     padding-top: 2em;
     padding-bottom: 2em;
+}
+
+.title_section {
+    margin-bottom: 1em;
+}
+
+.title_section h2 {
+    font-size: 2.5em;
 }
 
 .search_section {
