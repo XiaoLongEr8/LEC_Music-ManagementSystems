@@ -9,10 +9,6 @@ class AlbumType extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name'
-    ];
-
     public function albums(){
         return $this->hasMany(Album::class);
     }
