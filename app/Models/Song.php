@@ -22,7 +22,7 @@ class Song extends Model
     }
 
     public function genres(){
-        return $this->belongsToMany(Genre::class, 'genres');
+        return $this->belongsToMany(Genre::class, 'song_genres');
     }
 
     public function edit_song_requests(){

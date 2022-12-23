@@ -14,6 +14,6 @@ class Genre extends Model
     ];
 
     public function songs(){
-        return $this->belongsToMany(Song::class, 'songs');
+        return $this->belongsToMany(Song::class, 'song_genres');
     }
 }
