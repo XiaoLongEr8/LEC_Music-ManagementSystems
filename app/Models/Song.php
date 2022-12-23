@@ -9,6 +9,14 @@ class Song extends Model
 {
     use HasFactory;
 
+    protected $fillable=[
+        'album_id',
+        'title',
+        'description',
+        'lyrics',
+        'view_count'
+    ];
+
     public function album(){
         return $this->belongsTo(Album::class);
     }

@@ -9,6 +9,13 @@ class EditArtistRequest extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'artist_id',
+        'body',
+        'status'
+    ];
+
     public function artist(){
         return $this->belongsTo(Artist::class);
     }

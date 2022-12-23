@@ -9,6 +9,13 @@ class EditSongRequest extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'song_id',
+        'body',
+        'status'
+    ];
+
     public function song(){
         return $this->belongsTo(Song::class);
     }
