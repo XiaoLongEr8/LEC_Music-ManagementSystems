@@ -41,4 +41,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function edit_artist_requests(){
+        return $this->hasMany(EditArtistRequest::class);
+    }
+
+    public function edit_song_requests(){
+        return $this->hasMany(EditSongRequest::class);
+    }
+
+    public function create_song_requests(){
+        return $this->hasMany(CreateSongRequest::class);
+    }
 }
