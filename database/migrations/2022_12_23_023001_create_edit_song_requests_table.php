@@ -15,6 +15,12 @@ class CreateEditSongRequestsTable extends Migration
     {
         Schema::create('edit_song_requests', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('song_id');
+            $table->foreign('song_id')->references('id')->on('songs');
+            $table->longText('body');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }

@@ -13,7 +13,14 @@ class SongGenres extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('song_genres', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('genre_id');
+            $table->foreign('genre_id')->references('id')->on('genres');
+            $table->unsignedBigInteger('song_id');
+            $table->foreign('song_id')->references('id')->on('songs');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class SongGenres extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('song_genres');
     }
 }
