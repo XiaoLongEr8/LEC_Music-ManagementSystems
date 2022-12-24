@@ -18,7 +18,9 @@ class LoginController extends Controller
 
         $credentials = request(['email', 'password']);
         if (!Auth::attempt($credentials)) {
-            return response('', 401);
+            $validator = Validator::make([], []); // Empty data and rules fields
+            $validator->errors()->add('email', 'The email or password is incorrect');
+            return redirect()->back()->withErrors($validator);
         }
 
         return redirect('/');
@@ -49,14 +51,14 @@ class LoginController extends Controller
         }
         else{
             $user = User::create([
-                'first_name' =>$google_user->user['given_name'],
-                'last_name' => $google_user->user['family_name'],
+                'fullname' => $google_user->name,
+                'username' => strstr($google_user->email, '@', true),
                 'email' => $google_user->email,
                 'google_id' => $google_user->id,
                 'google_token' => $google_user->token,
                 'google_refresh_token' => $google_user->refreshToken,
-                'profile_pic' => $google_user->getAvatar()
-
+                'profile_pic' => $google_user->getAvatar(),
+                'role' => 1
             ]);
         }
 
