@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/style/register.css">
 
     {{-- Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
 <body>
 
     <nav class="navBar_Container">
-        <img src="image/Logo.svg" alt="">
+        <h1>Lyrics-Go</h1>
     </nav>
 
     <main class="main_container">
