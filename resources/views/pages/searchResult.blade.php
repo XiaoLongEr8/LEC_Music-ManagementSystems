@@ -14,8 +14,7 @@
 @section('container')
     <main class="main_container">
 
-        {{-- Jika sudah integrasi dengan BE hapus stylenya --}}
-        <section class="result_container separated_container" style="display: none">
+        <section class="result_container separated_container">
 
             <h2 class="result_title">Looking for "Song Title"</h2>
 
@@ -41,7 +40,8 @@
 
         </section>
 
-        <section class="non_result_container">
+        {{-- Jika sudah integrasi dengan BE hapus stylenya --}}
+        <section class="non_result_container" style="display: none">
             <h2 class="result_title">Looking for "Song Title"</h2>
 
             <h6 class="non_result_desc">
