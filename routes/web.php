@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/result', function () {
     return view('pages.searchResult');
 });
+
+Route::get('/admin', function () {
+    return view('admin.home_admin');
+});

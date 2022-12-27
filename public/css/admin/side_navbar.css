@@ -1,0 +1,43 @@
+:root {
+    --gray: #707070;
+    --white: #FBFBFB;
+    --black: #2B2B2B;
+    --azure: #F0FFFF;
+    --azure-hover: #CEE2E2;
+}
+
+.side_navbar {
+    width: 12vw;
+    height: 100vh;
+    background-color: var(--azure);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem 0;
+}
+.side_navbar a {
+    color: var(--black);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.navigation_option {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.side_navigation {
+    padding: 1rem;
+    margin: 0 1rem;
+    transition: 0.3s;
+
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.side_navigation:hover {
+    transition: 0.3s;
+    background-color: var(--azure-hover);
+}
