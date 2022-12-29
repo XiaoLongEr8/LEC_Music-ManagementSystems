@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SongController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,4 +27,6 @@ Route::get('/admin', function () {
 });
 Route::get('/auth/redirect', [LoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google.login');
+
+Route::get('/search', [SongController::class, 'search']);
 
