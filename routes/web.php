@@ -17,7 +17,13 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
+Route::get('/result', function () {
+    return view('pages.searchResult');
+});
+
+Route::get('/admin', function () {
+    return view('admin.home_admin');
+});
 Route::get('/auth/redirect', [LoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google.login');
-
 
