@@ -58,17 +58,17 @@
             <div class="song_card_container">
                 {{-- Looping this card layout when integration with BE --}}
                 @foreach ($latest as $song)
-                <article class="song_card">
-                    {{-- For integration with BE:
+                    <article class="song_card">
+                        {{-- For integration with BE:
                     1. Un-comment the img src
                     2. delete background color in css with class .song_album_img
                     --}}
-                    <img src="{{$song->album->cover_image}}" alt="Album Cover" class="song_album_img">
-                    {{-- <div class="song_album_img"></div> --}}
-                    <h1 class="song_title">{{$song->title}}</h1>
-                    <h6 class="song_author">{{$song->album->artist->fullname}}/h6>
-                    <h5 class="song_timespam">{{$song->time_ago}}</h5>
-                </article>
+                        <img src="{{ $song->album->cover_image }}" alt="Album Cover" class="song_album_img">
+                        {{-- <div class="song_album_img"></div> --}}
+                        <h1 class="song_title">{{ $song->title }}</h1>
+                        <h6 class="song_author">{{ $song->album->artist->fullname }}</h6>
+                        <h5 class="song_timespam">{{ $song->time_ago }}</h5>
+                    </article>
                 @endforeach
             </div>
         </section>
@@ -90,10 +90,10 @@
                     @foreach ($top as $song)
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
-                            <td>{{$song->title}}</td>
-                            <td>{{$song->album->artist->fullname}}</td>
-                            <td>{{$song->album->formattedReleaseDate()}}</td>
-                            <td>{{$song->formattedViews()}}</td>
+                            <td>{{ $song->title }}</td>
+                            <td>{{ $song->album->artist->fullname }}</td>
+                            <td>{{ $song->album->formattedReleaseDate() }}</td>
+                            <td>{{ $song->formattedViews() }}</td>
                         </tr>
                     @endforeach
                 </tbody>
