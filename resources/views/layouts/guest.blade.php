@@ -20,7 +20,7 @@
         @yield('container')
     </div>
 
-    {{-- @include('../partials/footer.blade.php') --}}
+    @include('partials.footer')
 
 </body>
 
