@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('pageTitleAdmin')</title>
     <link rel="stylesheet" href="css/admin/admin_home.css">
+    <link rel="stylesheet" href="css/admin/admin_artist.css">
     <link rel="stylesheet" href="css/admin/side_navbar.css">
 
     {{-- Fonts --}}

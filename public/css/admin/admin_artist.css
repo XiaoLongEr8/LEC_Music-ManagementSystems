@@ -1,0 +1,30 @@
+:root {
+    --white: #FBFBFB;
+    --black: #2B2B2B;
+    --red: #D04C4C;
+    --blue: #85BEF4;
+    --orange: #FA973A;
+    --red-hover: #A83939;
+    --blue-hover: #5492CD;
+    --orange-hover: #CE792A;
+    --background-blue: #BFD6EC;
+}
+
+.col-artist-1 {
+    width: 4%;
+}
+.col-artist-2 {
+    width: 35%;
+}
+.col-artist-3 {
+    width: 16%;
+}
+.col-artist-4 {
+    width: 25%;
+}
+.col-artist-5 {
+    width: 10%;
+}
+.col-artist-6 {
+    width: 10%;
+}
