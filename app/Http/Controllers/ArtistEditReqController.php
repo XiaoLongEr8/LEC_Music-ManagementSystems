@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ArtistEditController extends Controller
+class ArtistEditReqController extends Controller
 {
     //
 }
