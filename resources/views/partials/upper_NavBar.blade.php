@@ -10,6 +10,6 @@
     </section>
 
     <section>
-        <button class="login_btn">login</button>
+        <a href="{{route('logout')}}" class="login_btn">logout</a>
     </section>
 </nav>

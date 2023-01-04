@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SongController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +23,8 @@ Route::get('/result', function () {
     return view('pages.searchResult');
 });
 
-Route::get('/login', function () {
-    return view('pages.login');
-});
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'store'])->name('login');
 
 Route::get('/admin', function () {
     return view('admin.home_admin');
@@ -34,3 +35,6 @@ Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallba
 
 Route::get('/search', [SongController::class, 'search']);
 
+Route::get('/register', [RegisterController::class, 'goToRegister'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
