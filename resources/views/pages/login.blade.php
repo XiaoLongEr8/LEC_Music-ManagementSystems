@@ -28,12 +28,14 @@
               <h3 class="login_subtitle">Please sign in to your account</h3>
           </section>
 
-          <div class="google_sign_container">
-            <button class="btn_sign_google">
-              <img src="image/G_Logo.png" class="img_google" alt="">
-              <p> Login with Google </p>
-            </button>
-          </div>
+          <form action="{{route('google.redirect')}}">
+            <div class="google_sign_container">
+                <button class="btn_sign_google">
+                  <img src="image/G_Logo.png" class="img_google" alt="">
+                  <p> Login with Google </p>
+                </button>
+              </div>
+          </form>
 
           <div class="split_container">
             <hr>
@@ -41,13 +43,20 @@
             <hr>
           </div>
 
-          <form action="">
-
+          <form action="{{route('login')}}" method="POST">
+            @csrf
               <section class="input_Row_Section">
+                {{-- @if($errors->any())
+                <span>
+                    @foreach ($errors->all() as $error)
+                        <li><strong>{{ $error }}</strong></li>
+                    @endforeach
+                </span>
+                @endif --}}
                   <div class="input_Column_Section">
                       <label for="email" class="item_Title">Email</label>
                       <input type="email" class="email" id="email_Value" placeholder="Email"
-                          aria-describedby="emailHelp" required>
+                          aria-describedby="emailHelp" required name="email">
                   </div>
               </section>
 
@@ -55,13 +64,13 @@
                   <div class="input_Column_Section">
                       <label for="pass">Password</label>
                       <input type="password" id="pass" placeholder="Password" name="password" minlength="8"
-                          required>
+                          required name="password">
                   </div>
               </section>
 
               <div class="input_Row_Section">
                   <div class="aggrement_Container">
-                      <input class="form-check-input" type="checkbox" value="" id="invalidCheck">
+                      <input class="form-check-input" type="checkbox" checked="{{$loginCookie!=null}}>" id="invalidCheck" name="remember">
                       <label class="form-check-label" for="invalidCheck">
                           Remember me
                       </label>

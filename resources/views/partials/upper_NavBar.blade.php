@@ -7,6 +7,7 @@
         <h1>Lyrics-Go</h1>
     </section>
 
+
     <section class="right">
      <section class="navbar_search_container">
         <div class="navbar_search_section">
@@ -22,5 +23,6 @@
             <a>Login</a>
         </button>
     </section>
+
     </section>
 </nav>
