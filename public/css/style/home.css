@@ -113,12 +113,13 @@
 }
 
 .song_card {
-    height: 18em;
+    height: 22em;
     width: 12em;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 
     margin: 2em 0.5em 2em 0.5em;
     padding: 0.5em;
@@ -133,7 +134,7 @@
 }
 
 .song_title {
-    font-size: 1.8em;
+    font-size: 1.4em;
 }
 
 .song_author {
@@ -163,7 +164,7 @@
 .leaderboard_table tbody tr td {
     width: 11em;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .leaderboard_table tbody tr td {

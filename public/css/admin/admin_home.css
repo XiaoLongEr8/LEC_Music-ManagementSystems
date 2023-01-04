@@ -1,7 +1,14 @@
 :root {
-    --gray: #707070;
+    --heading-table: #529de7;
     --white: #FBFBFB;
     --black: #2B2B2B;
+    --red: #D04C4C;
+    --blue: #85BEF4;
+    --orange: #FA973A;
+    --red-hover: #A83939;
+    --blue-hover: #5492CD;
+    --orange-hover: #CE792A;
+    --background-blue: #BFD6EC;
 }
 
 * {
@@ -11,5 +18,94 @@
 }
 body {
     font-family: "Poppins", sans-serif;
-    background-color: var(--gray);
+    background-color: var(--background-blue);
+
+    display: flex;
+}
+
+.admin-section {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3rem;
+    width: 100%;
+    padding: 3rem 2rem;
+}
+.admin-table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid;
+}
+.admin-table td + td,
+th {
+    border-left: 1px solid;
+}
+th {
+    background-color: var(--heading-table);
+}
+td {
+    text-align: center;
+}
+tr {
+    height: 40px;
+}
+.heading-table {
+    height: 30px;
+}
+.col-1 {
+    width: 3%;
+}
+.col-2 {
+    width: 20%;
+}
+.col-3 {
+    width: 22%;
+}
+.col-4 {
+    width: 10%;
+}
+.col-5 {
+    width: 15%;
+}
+.col-6 {
+    width: 10%;
+}
+.col-7 {
+    width: 10%;
+}
+.col-8 {
+    width: 10%;
+}
+.deletelyrics {
+    background-color: var(--red);
+    transition: 0.3s;
+}
+.editlyrics {
+    background-color: var(--orange);
+    transition: 0.3s;
+}
+.viewlyrics {
+    background-color: var(--blue);
+    transition: 0.3s;
+}
+.deletelyrics:hover {
+    background-color: var(--red-hover);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.editlyrics:hover {
+    background-color: var(--orange-hover);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.viewlyrics:hover {
+    background-color: var(--blue-hover);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.table-adminbutton {
+    padding: 0.25rem 1rem;
+    border: none;
+    border-radius: 5px;
+    font-family: "Poppins", sans-serif;
 }

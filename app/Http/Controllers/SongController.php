@@ -20,4 +20,9 @@ class SongController extends Controller
             'artist_result' => $artist_res
         ]);
     }
+
+    public function displayAll(){
+        $songs = Song::all();
+        return response()->json($songs);
+    }
 }

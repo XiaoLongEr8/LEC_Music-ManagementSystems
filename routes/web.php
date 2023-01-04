@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SongController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,19 +17,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.home');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/result', function () {
     return view('pages.searchResult');
 });
 
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'store'])->name('login');
+
 Route::get('/admin', function () {
     return view('admin.home_admin');
 });
+
 Route::get('/auth/redirect', [LoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google.login');
 
 Route::get('/search', [SongController::class, 'search']);
 
+Route::get('/register', [RegisterController::class, 'goToRegister'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
