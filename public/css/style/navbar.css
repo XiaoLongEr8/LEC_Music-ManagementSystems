@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+.upper_navbar_container {
+    padding-top: 2%;
+    width: 100%;
+    display: flex;
+}
+
+.navbar_logo {
+    width: 30%;
+    text-align: center;
+    align-items: center;
+}
+
+.navbar_logo h1 {
+    font-size: xx-large;
+    font-weight: normal;
+}
+
+.right {
+    display: flex;
+    float: right;
+    width: 70%;
+}
+
+.navbar_search_container {
+    align-items: center;
+    width: 70%;
+    padding-right: 3%;
+}
+
+.navbar_search_section {
+    height: 3em;
+    width: auto;
+    display: flex;
+    align-items: center;
+    padding-left: 1em;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.navbar_search_button {
+    background-color: white;
+    border: none;
+}
+
+.navbar_search_button img {
+    background-color: white;
+    height: 2.8em;
+}
+
+.navbar_search_input {
+    height: 2.8em;
+    width: 85%;
+    margin-left: 1em;
+    border-left: 2px solid black;
+}
+
+.navbar_search_input input {
+    height: 100%;
+    width: 97%;
+    padding-left: 0.5em;
+    border: none;
+    color: #898989;
+    font-size: large;
+}
+
+.navbar_login_container {
+    height: 3em;
+    width: 10%;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 20px;
+
+    text-align: center;
+}
+
+.navbar_login_btn {
+    background-color: white;
+    border: none;
+    margin-top: 10%;
+}
+
+.navbar_login_btn a {
+    font-size: large;
+    font-weight: normal;
+}
