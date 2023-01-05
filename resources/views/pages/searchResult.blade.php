@@ -16,40 +16,43 @@
     <main class="main_container">
 
         @if (!$results->isEmpty())
-        <section class="result_container separated_container">
+            <section class="result_container separated_container">
 
-            <h2 class="result_title">Looking for {{request('q')}}</h2>
+                <h2 class="result_title">Looking for {{ request('q') }}</h2>
 
-            <div class="result_list_container">
+                <div class="result_list_container">
 
-                @foreach ($results as $result)
-                    <article class="result_card_container">
-                        <section class="left_content">
-                            <img src="{{$result->album_id ? $result->album->cover_image : $result->profile_pic}}" alt="this is image" class="song_album_img">
-                            <div class="title_author_content">
-                                <h2>{{$result->name}}</h2>
-                                <h5>{{$result->album_id ? $result->album->artist->fullname : ''}}</h5>
-                            </div>
-                        </section>
+                    @foreach ($results as $result)
+                        <article class="result_card_container">
+                            <section class="left_content">
+                                <img src="{{ $result->album_id ? $result->album->cover_image : $result->profile_pic }}"
+                                    alt="this is image" class="song_album_img">
+                                <div class="title_author_content">
+                                    <h2>{{ $result->name }}</h2>
+                                    <h5>{{ $result->album_id ? $result->album->artist->fullname : '' }}</h5>
+                                </div>
+                            </section>
 
-                        <section class="right_content">
-                            <form action="{{$result->album_id ? route('song.show', $result->id):route('artist.show', $result->id)}}">
-                                <button class="view_lyrics_btn">View {{$result->album_id ? 'Lyrics' : 'Artist'}}</button>
-                            </form>
-                        </section>
+                            <section class="right_content">
+                                <form
+                                    action="{{ $result->album_id ? route('song.show', $result->id) : route('artist.show', $result->id) }}">
+                                    <button class="view_lyrics_btn">View
+                                        {{ $result->album_id ? 'Lyrics' : 'Artist' }}</button>
+                                </form>
+                            </section>
 
-                    </article>
-                @endforeach
+                        </article>
+                    @endforeach
 
-            </div>
-            {{$results->links()}}
-        </section>
+                </div>
+                {{ $results->links() }}
+            </section>
 
 
-        {{-- If the results are empty --}}
+            {{-- If the results are empty --}}
         @else
             <section class="non_result_container">
-                <h2 class="result_title">Looking for {{request('q')}}</h2>
+                <h2 class="result_title">Looking for {{ request('q') }}</h2>
 
                 <h6 class="non_result_desc">
                     Sorry, we cannot find the song or artist that you are searching for :(
