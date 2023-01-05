@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SongController;
@@ -33,7 +34,9 @@ Route::get('/admin', function () {
 Route::get('/auth/redirect', [LoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google.login');
 
-Route::get('/search', [SongController::class, 'search']);
+Route::get('/search', [SongController::class, 'search'])->name('search');
+Route::get('/artist/show/{id}', [ArtistController::class, 'show'])->name('artist.show');
+Route::get('/song/show/{id}', [SongController::class, 'show'])->name('song.show');
 
 Route::get('/register', [RegisterController::class, 'goToRegister'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');

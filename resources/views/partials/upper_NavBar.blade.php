@@ -4,7 +4,9 @@
 
 <nav class="upper_navbar_container">
     <section class="navbar_logo">
-        <h1>Lyrics-Go</h1>
+        <a href="/" style="text-decoration: none; color:black">
+            <h1>Lyrics-Go</h1>
+        </a>
     </section>
 
 
@@ -12,16 +14,18 @@
      <section class="navbar_search_container">
         <div class="navbar_search_section">
             <button type="" class="navbar_search_button"><img src="image/search_logo.png"></button>
-            <form action="" class="navbar_search_input">
-                <input type="text" placeholder="Search song title, artist, or lyrics...">
+            <form action="{{route('search')}}" class="navbar_search_input">
+                <input type="text" placeholder="Search song title, artist, or lyrics..." name="q" value="{{request('q')}}">
             </form>
         </div>
     </section>
 
     <section class="navbar_login_container">
-        <button class="navbar_login_btn">
-            <a>Login</a>
-        </button>
+        <form action="{{route('login')}}">
+            <button class="navbar_login_btn">
+                <a>Login</a>
+            </button>
+        </form>
     </section>
 
     </section>

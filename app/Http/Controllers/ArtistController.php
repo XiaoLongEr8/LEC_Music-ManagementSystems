@@ -11,4 +11,9 @@ class ArtistController extends Controller
         $artists = Artist::all();
         return response()->json($artists);
     }
+
+    public function show($id){
+        $artist = Artist::where('id', $id)->with('albums')->get();
+        return response()->json($artist);
+    }
 }
