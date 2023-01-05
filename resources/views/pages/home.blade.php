@@ -36,8 +36,8 @@
 
             <div class="search_section">
                 <button type="" class="search_button"><img src="image/search_logo.png" alt="Search logo"></button>
-                <form action="" class="search_input">
-                    <input type="text" placeholder="Search song title, artist, or lyrics...">
+                <form action="{{route('search')}}" class="search_input">
+                    <input type="text" placeholder="Search song title, artist, or lyrics..." name="q">
                 </form>
             </div>
 
