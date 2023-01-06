@@ -10,7 +10,7 @@ class SongCreateReqController extends Controller
 {
     public function create(Request $request){
         if(!Auth::check()){
-            return redirect('login');
+            return redirect('/login');
         }
 
         $request->validate([

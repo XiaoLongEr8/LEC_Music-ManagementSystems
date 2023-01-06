@@ -13,7 +13,7 @@ class SongEditReqController extends Controller
         $song = Song::where('id', $request->id)->first();
 
         if(!Auth::check()){
-            return redirect('login');
+            return redirect('/login');
         }
 
         if(!$song){

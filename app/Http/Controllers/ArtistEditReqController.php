@@ -13,7 +13,7 @@ class ArtistEditReqController extends Controller
         $artist = Artist::where('id', $request->id)->first();
 
         if(!Auth::check()){
-            return redirect('login');
+            return redirect('/login');
         }
 
         if(!$artist){
