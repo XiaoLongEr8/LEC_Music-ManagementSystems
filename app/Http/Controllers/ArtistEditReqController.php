@@ -33,4 +33,13 @@ class ArtistEditReqController extends Controller
 
         return response()->json($form);
     }
+
+    public function goToForm($id){
+        $artist = Artist::where('id', $id)->select(['id', 'fullname'])->first();
+        if(!$artist){
+            return back();
+        }
+
+        return view('pages.requestSong', compact('artist'));
+    }
 }
