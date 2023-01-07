@@ -23,6 +23,11 @@ body {
     display: flex;
 }
 
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 .admin-section {
     display: flex;
     flex-direction: column;
@@ -42,24 +47,26 @@ th {
 }
 th {
     background-color: var(--heading-table);
+    font-size: 14px;
 }
 td {
     text-align: center;
+    font-size: 12px;
 }
 tr {
     height: 40px;
 }
 .heading-table {
-    height: 30px;
+    height: 25px;
 }
 .col-1 {
-    width: 3%;
+    width: 4%;
 }
 .col-2 {
     width: 20%;
 }
 .col-3 {
-    width: 22%;
+    width: 21%;
 }
 .col-4 {
     width: 10%;
@@ -108,4 +115,24 @@ tr {
     border: none;
     border-radius: 5px;
     font-family: "Poppins", sans-serif;
+}
+.add-new-item {
+    display: flex;
+    align-items: center;
+
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background-color: var(--blue);
+    border-radius: 5px;
+    border: solid 1px;
+    font-family: "Poppins", sans-serif;
+    transition: 0.3s;
+}
+.add-new-item:hover {
+    background-color: var(--blue-hover);
+    cursor: pointer;
+    transition: 0.3s;
+}
+a {
+    text-decoration: none;
 }

@@ -34,6 +34,10 @@ Route::get('/admin', function () {
     return view('admin.home_admin');
 });
 
+Route::get('/admin-artist', function () {
+    return view('admin.artist_admin');
+});
+
 Route::get('/auth/redirect', [LoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google.login');
 
