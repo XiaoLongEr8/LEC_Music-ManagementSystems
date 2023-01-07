@@ -89,7 +89,7 @@
             </form>
 
             <section class="anchor_Section">
-                <h4 class="Login_Anchor">Don't have an account? <a href="{{-- ==diisi== --}}">Click Here</a></h4>
+                <h4 class="Login_Anchor">Don't have an account? <a href="/register">Click Here</a></h4>
             </section>
 
         </div>
