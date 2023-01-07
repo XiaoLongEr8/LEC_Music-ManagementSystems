@@ -2,6 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Artist;
+use App\Models\Album;
+use App\Models\Genre;
+use App\Models\Song;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +17,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(AlbumTypeSeeder::class);
         // \App\Models\User::factory(10)->create();
+        Artist::factory(25)->create();
+        Genre::factory(15)->create();
+        Album::factory(40)->create();
+        Song::factory(100)->create();
     }
 }

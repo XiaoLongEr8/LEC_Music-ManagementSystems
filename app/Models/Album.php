@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,5 +30,9 @@ class Album extends Model
 
     public function songs(){
         return $this->hasMany(Song::class);
+    }
+
+    public function formattedReleaseDate(){
+        return Carbon::parse($this->release_date)->format('d/m/Y');
     }
 }

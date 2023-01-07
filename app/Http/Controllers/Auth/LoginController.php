@@ -1,15 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Cookie;
 
 class LoginController extends Controller
 {
+    public function login(){
+        if(Auth::check()){
+            return redirect('/');
+        }
+
+        $cookieValues = Cookie::has('loginCookie')?json_decode(Cookie::get('loginCookie'), true):[];
+
+        return view('pages.login')->with('loginCookie', $cookieValues);
+    }
+
     public function store(Request $request){
         $request->validate([
             'email' => ['required', 'string', 'email'],
@@ -21,6 +33,18 @@ class LoginController extends Controller
             $validator = Validator::make([], []); // Empty data and rules fields
             $validator->errors()->add('email', 'The email or password is incorrect');
             return redirect()->back()->withErrors($validator);
+        }
+
+        if($request->remember){
+            $minutes = 120;
+            $values = [
+                'email' => $request->email,
+                'name' => $request->name
+            ];
+
+            $cookie = cookie('loginCookie', json_encode($values), $minutes);
+
+            return redirect('/')->withCookie($cookie);
         }
 
         return redirect('/');
@@ -64,6 +88,11 @@ class LoginController extends Controller
 
         Auth::login($user);
 
+        return redirect('/');
+    }
+
+    public function logout(){
+        Auth::logout();
         return redirect('/');
     }
 }
