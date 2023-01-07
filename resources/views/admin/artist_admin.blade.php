@@ -39,7 +39,7 @@
             <a href="">
                 <button class="add-new-item">
                     <ion-icon name="add-outline"></ion-icon>
-                    <p>Add new Artist</p>
+                    <p>Add New Artist</p>
                 </button>
             </a>
         </div>

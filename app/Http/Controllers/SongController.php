@@ -37,8 +37,18 @@ class SongController extends Controller
     }
 
     public function displayAll(){
-        $songs = Song::all();
-        return response()->json($songs);
+        $query = Song::select(['id', 'album_id', 'title', 'view_count'])
+        ->with(['album' => function($query){
+            $query->select(['id', 'release_date', 'artist_id'])->with([
+                'artist' => function($query){
+                    $query->select([ 'id', 'fullname']);
+                }
+            ]);
+        }]);
+
+        $songs = $query->paginate(10);
+
+        return view('admin.home_admin', compact('songs'));
     }
 
     public function show($id){
