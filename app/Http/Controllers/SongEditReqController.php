@@ -21,14 +21,12 @@ class SongEditReqController extends Controller
         }
 
         $request->validate([
-            'subject' => ['required', 'string', 'min:3', 'max:100'],
             'body' => ['required', 'string', 'min:20', 'max:100000'],
         ]);
 
         $form = EditSongRequest::create([
             'user_id' => Auth::id(),
             'song_id' => $request->id,
-            'subject' => $request->subject,
             'body' => $request->body,
             'status' => 0
         ]);

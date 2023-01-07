@@ -11,7 +11,6 @@ class CreateSongRequest extends Model
 
     protected $fillable = [
         'user_id',
-        'subject',
         'body',
         'status'
     ];

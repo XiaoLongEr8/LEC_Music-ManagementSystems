@@ -14,13 +14,11 @@ class SongCreateReqController extends Controller
         }
 
         $request->validate([
-            'subject' => ['required', 'string', 'min:3', 'max:100'],
             'body' => ['required', 'string', 'min:20', 'max:100000']
         ]);
 
         $form = CreateSongRequest::create([
             'user_id' => Auth::id(),
-            'subject' => $request->subject,
             'body' => $request->body,
             'status' => 0
         ]);
