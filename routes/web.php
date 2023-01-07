@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\SongCreateReqController;
 use App\Http\Controllers\SongEditReqController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,3 +52,7 @@ Route::get('/request/create-song', function () {
 Route::get('/request/edit-song/{id}', [SongEditReqController::class, 'goToForm'])->name('song.edit.req');
 
 Route::get('/request/edit-artist/{id}', [ArtistEditReqController::class, 'goToForm'])->name('artist.edit.req');
+
+Route::post('/request/create-song', [SongCreateReqController::class, 'create'])->name('create.song.req');
+Route::post('/request/edit-song', [SongEditReqController::class, 'create'])->name('edit.song.req');
+Route::post('/request/edit-artist', [ArtistEditReqController::class, 'create'])->name('edit.artist.req');

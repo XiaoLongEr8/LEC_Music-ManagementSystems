@@ -13,7 +13,9 @@
 
 @section('container')
     <main class="main_container">
-        <form action="" method="POST" class="form_container" id="request_form_id">
+        <form action="{{Route::is('song.create.req')?
+                route('create.song.req'):(Route::is('song.edit.req')?
+                    route('edit.song.req'):route('edit.artist.req'))}}" method="POST" class="form_container" id="request_form_id">
             @csrf
 
             <div class="body_input_container">
@@ -21,14 +23,24 @@
                     @if (Route::is('song.create.req'))
                         Add Song/Artist Request
                     @elseif (Route::is('song.edit.req'))
-                        Edit Song "{{$song->title}}" Request
+                        Edit Song Request
+                        <br>
+                        "{{$song->title}}"
                     @elseif (Route::is('artist.edit.req'))
-                        Edit Artist "{{$artist->fullname}}" Request
+                        Edit Artist Request
+                        <br>
+                        "{{$artist->fullname}}"
                     @endif
                 </label>
                 <textarea name="body" id="body" class="input_textbox" form="request_form_id" cols="30" rows="10"
                     placeholder="Input the your request" required></textarea>
             </div>
+
+            @if (Route::is('song.edit.req'))
+                <input type="hidden" name="id" value="{{$song->id}}">
+            @elseif (Route::is('artist.edit.req'))
+            <input type="hidden" name="id" value="{{$artist->id}}">
+            @endif
 
             <div class="Submit_BTN_Container">
                 <button class="btn btn-primary" type="submit">Submit</button>
