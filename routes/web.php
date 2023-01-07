@@ -41,3 +41,7 @@ Route::get('/song/show/{id}', [SongController::class, 'show'])->name('song.show'
 Route::get('/register', [RegisterController::class, 'goToRegister'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/requestSong', function () {
+    return view('pages.requestSong');
+});
