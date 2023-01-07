@@ -2,7 +2,7 @@
 
 @section('link')
     {{-- Css --}}
-    <link rel="stylesheet" href="css/style/searchResult.css">
+    <link rel="stylesheet" href="{{asset('css/style/searchResult.css')}}">
 
     {{-- Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -2,7 +2,7 @@
 
 @section('link')
     {{-- CSS --}}
-    <link rel="stylesheet" href="css/style/requestSong.css">
+    <link rel="stylesheet" href="{{asset('css/style/requestSong.css')}}">
 
     {{-- Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,11 +13,19 @@
 
 @section('container')
     <main class="main_container">
-        <form action="" method="post" class="form_container" id="request_form_id">
+        <form action="" method="POST" class="form_container" id="request_form_id">
             @csrf
 
             <div class="body_input_container">
-                <label for="body" class="input_label">Request </label>
+                <label for="body" class="input_label">
+                    @if (Route::is('song.create.req'))
+                        Add Song/Artist Request
+                    @elseif (Route::is('song.edit.req'))
+                        Edit Song "{{$song->title}}" Request
+                    @elseif (Route::is('artist.edit.req'))
+                        Edit Artist "{{$artist->fullname}}" Request
+                    @endif
+                </label>
                 <textarea name="body" id="body" class="input_textbox" form="request_form_id" cols="30" rows="10"
                     placeholder="Input the your request" required></textarea>
             </div>
