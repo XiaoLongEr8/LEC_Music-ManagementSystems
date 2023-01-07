@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('pageTitleAdmin')</title>
-    <link rel="stylesheet" href="css/admin/admin_home.css">
-    <link rel="stylesheet" href="css/admin/side_navbar.css">
+    <link rel="stylesheet" href="{{asset('css/admin/admin_home.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin/side_navbar.css')}}">
 
     {{-- Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
