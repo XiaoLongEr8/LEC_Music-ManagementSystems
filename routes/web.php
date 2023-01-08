@@ -53,6 +53,8 @@ Route::post('/request/create-song', [SongCreateReqController::class, 'create'])-
 Route::post('/request/edit-song', [SongEditReqController::class, 'create'])->name('edit.song.req');
 Route::post('/request/edit-artist', [ArtistEditReqController::class, 'create'])->name('edit.artist.req');
 
-Route::get('/admin', [SongController::class, 'displayAll'])->name('admin.songs');
+Route::middleware(['admin'])->group(function(){
+    Route::get('/admin', [SongController::class, 'displayAll'])->name('admin.songs');
 
-Route::get('/admin-artist', [ArtistController::class, 'displayAll'])->name('admin.artists');
+    Route::get('/admin-artist', [ArtistController::class, 'displayAll'])->name('admin.artists');
+});

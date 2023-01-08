@@ -55,4 +55,39 @@ class SongController extends Controller
         $song = Song::where('id', $id)->with('album.artist')->get();
         return response()->json($song);
     }
+
+    public function destroy($id){
+        $song = Song::where('id', $id)->first();
+        if(!$song){
+            return back();
+        }
+
+        $song->delete();
+        return back();
+    }
+
+    public function edit(Request $request){
+        $song = Song::where('id', $request->id)->first();
+        if(!$song){
+            return back();
+        }
+
+        $request->validate([
+            'album_id' => ['required', 'exists:album,id'],
+            'title' => ['required', 'string', 'max:100'],
+            'description' => ['required', 'string', 'min:10', 'max:1000'],
+            'lyrics' => ['required', 'string', 'min:10', 'max:7000'],
+            'view_count' => ['required', 'numeric']
+        ]);
+
+        $song->update([
+            'album_id' => $request->album_id,
+            'title' => $request->title,
+            'description' => $request->description,
+            'lyrics' => $request->lyrics,
+            'view_count' => $request->view_count
+        ]);
+
+        return response()->json($song);
+    }
 }

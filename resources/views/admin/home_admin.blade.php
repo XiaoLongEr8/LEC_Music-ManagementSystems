@@ -27,7 +27,7 @@
                         <td>{{$song->formattedViews()}}</td>
                         <td>{{$song->album->formattedReleaseDate()}}</td>
                         <td>
-                            <a href="">
+                            <a href="{{route('song.show', $song->id)}}">
                                 <button class="table-adminbutton viewlyrics">Lyrics</button>
                             </a>
                         </td>
