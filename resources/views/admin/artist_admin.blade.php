@@ -11,18 +11,17 @@
                 <tr class="heading-table">
                     <th class="col-artist-1">No</th>
                     <th class="col-artist-2">Artist</th>
-                    <th class="col-artist-3">Birthday</th>
-                    <th class="col-artist-4">Nationality</th>
-                    <th class="col-artist-5">Edit</th>
-                    <th class="col-artist-6">Delete</th>
+                    <th class="col-artist-3">Nationality</th>
+                    <th class="col-artist-4">Edit</th>
+                    <th class="col-artist-5">Delete</th>
                 </tr>
 
-                {{-- tr dibawah nnti pake foreach --}}
+
+                @foreach ($artists as $artist)
                 <tr>
-                    <td>1</td>
-                    <td>Ardhito Pramono</td>
-                    <td>12/10/2019</td>
-                    <td>Indonesian</td>
+                    <td>{{((request('page', 1)-1)*10)+$loop->index+1}}</td>
+                    <td>{{$artist->fullname}}</td>
+                    <td>{{$artist->nationality}}</td>
                     <td>
                         <a href="">
                             <button class="table-adminbutton editlyrics">Edit</button>
@@ -34,8 +33,9 @@
                         </a>
                     </td>
                 </tr>
+                @endforeach
             </table>
-
+            {{$artists->links()}}
             <a href="">
                 <button class="add-new-item">
                     <ion-icon name="add-outline"></ion-icon>
