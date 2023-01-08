@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class ArtistController extends Controller
 {
     public function displayAll(){
-        $artists = Artist::all();
-        return response()->json($artists);
+        $artists = Artist::paginate(10);
+        return view('admin.artist_admin');
     }
 
     public function show($id){
