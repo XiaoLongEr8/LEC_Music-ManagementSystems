@@ -27,6 +27,10 @@ Route::get('/result', function () {
     return view('pages.searchResult');
 });
 
+Route::get('/detail', function () {
+    return view('pages.songDetail');
+});
+
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login');
 
