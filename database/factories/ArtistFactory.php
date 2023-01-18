@@ -23,6 +23,7 @@ class ArtistFactory extends Factory
             'fullname' => $name,
             'profile_pic' => $this->faker->imageUrl(400, 400, 'people'),
             'bio' => $this->faker->paragraph,
+            'nationality' => $this->faker->country
         ];
     }
 }

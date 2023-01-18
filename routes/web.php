@@ -34,14 +34,6 @@ Route::get('/detail', function () {
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login');
 
-Route::get('/admin', function () {
-    return view('admin.home_admin');
-});
-
-Route::get('/admin-artist', function () {
-    return view('admin.artist_admin');
-});
-
 Route::get('/auth/redirect', [LoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google.login');
 
@@ -64,3 +56,9 @@ Route::get('/request/edit-artist/{id}', [ArtistEditReqController::class, 'goToFo
 Route::post('/request/create-song', [SongCreateReqController::class, 'create'])->name('create.song.req');
 Route::post('/request/edit-song', [SongEditReqController::class, 'create'])->name('edit.song.req');
 Route::post('/request/edit-artist', [ArtistEditReqController::class, 'create'])->name('edit.artist.req');
+
+Route::middleware(['admin'])->group(function(){
+    Route::get('/admin', [SongController::class, 'displayAll'])->name('admin.songs');
+
+    Route::get('/admin-artist', [ArtistController::class, 'displayAll'])->name('admin.artists');
+});

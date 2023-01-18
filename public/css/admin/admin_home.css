@@ -116,6 +116,11 @@ tr {
     border-radius: 5px;
     font-family: "Poppins", sans-serif;
 }
+
+p {
+    all: unset;
+}
+
 .add-new-item {
     display: flex;
     align-items: center;
