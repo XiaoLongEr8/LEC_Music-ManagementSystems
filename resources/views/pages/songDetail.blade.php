@@ -69,6 +69,9 @@
 
     <script>
         document.getElementById("like-btn").addEventListener("click", function(){
+            document.getElementById("like-btn").classList.toggle("rating_clicked");
+            document.getElementById("dislike-btn").classList.remove("rating_clicked");
+
             var songId = $(this).data('song-id');
             $.ajax({
                 type: "POST",
@@ -78,10 +81,6 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                     'X-Requested-With': 'XMLHttpRequest'
                 },
-                success: function (response) {
-                    document.getElementById("like-btn").classList.toggle("rating_clicked");
-                    document.getElementById("dislike-btn").classList.remove("rating_clicked");
-                },
                 error: function (xhr, status, error) {
                     console.log(xhr.responseText);
                 }
@@ -89,7 +88,11 @@
         });
 
         document.getElementById("dislike-btn").addEventListener("click", function(){
+            document.getElementById("dislike-btn").classList.toggle("rating_clicked");
+            document.getElementById("like-btn").classList.remove("rating_clicked");
+
             var songId = $(this).data('song-id');
+
             $.ajax({
                 type: "POST",
                 url: '/like-dislike',
@@ -97,10 +100,6 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                     'X-Requested-With': 'XMLHttpRequest'
-                },
-                success: function (response) {
-                    document.getElementById("dislike-btn").classList.toggle("rating_clicked");
-                    document.getElementById("like-btn").classList.remove("rating_clicked");
                 },
                 error: function (xhr, status, error) {
                     console.log(xhr.responseText);
