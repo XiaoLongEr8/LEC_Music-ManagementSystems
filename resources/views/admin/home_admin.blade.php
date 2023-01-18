@@ -19,35 +19,36 @@
                     <th class="col-8">Delete</th>
                 </tr>
 
-                {{-- tr dibawah nnti pake foreach --}}
-                <tr>
-                    <td>1</td>
-                    <td>Bitterlove</td>
-                    <td>Ardhito Pramono</td>
-                    <td>2.652</td>
-                    <td>12/10/2019</td>
-                    <td>
-                        <a href="">
-                            <button class="table-adminbutton viewlyrics">Lyrics</button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="">
-                            <button class="table-adminbutton editlyrics">Edit</button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="">
-                            <button class="table-adminbutton deletelyrics">Delete</button>
-                        </a>
-                    </td>
-                </tr>
+                @foreach ($songs as $song)
+                    <tr>
+                        <td>{{((request('page', 1)-1)*10)+$loop->index+1}}</td>
+                        <td>{{$song->title}}</td>
+                        <td>{{$song->album->artist->fullname}}</td>
+                        <td>{{$song->formattedViews()}}</td>
+                        <td>{{$song->album->formattedReleaseDate()}}</td>
+                        <td>
+                            <a href="{{route('song.show', $song->id)}}">
+                                <button class="table-adminbutton viewlyrics">Lyrics</button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="">
+                                <button class="table-adminbutton editlyrics">Edit</button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="">
+                                <button class="table-adminbutton deletelyrics">Delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
             </table>
-
+            {{$songs->links()}}
             <a href="">
                 <button class="add-new-item">
                     <ion-icon name="add-outline"></ion-icon>
-                    <p>Add new Artist</p>
+                    <p>Add New Song</p>
                 </button>
             </a>
         </div>

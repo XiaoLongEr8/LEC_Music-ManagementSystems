@@ -12,6 +12,7 @@ class Artist extends Model
     protected $fillable = [
         'fullname',
         'profile_pic',
+        'nationality',
         'bio'
     ];
 

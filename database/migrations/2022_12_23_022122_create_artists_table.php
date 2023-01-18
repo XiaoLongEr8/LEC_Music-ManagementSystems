@@ -17,6 +17,7 @@ class CreateArtistsTable extends Migration
             $table->id();
             $table->string('fullname');
             $table->string('profile_pic');
+            $table->string('nationality');
             $table->longText('bio');
             $table->timestamps();
         });

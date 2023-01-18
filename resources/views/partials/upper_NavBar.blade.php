@@ -20,13 +20,15 @@
         </div>
     </section>
 
-    <section class="navbar_login_container">
-        <form action="{{route('login')}}">
-            <button class="navbar_login_btn">
-                <a>Login</a>
-            </button>
-        </form>
-    </section>
+    @if (!Auth::check())
+        <section class="navbar_login_container">
+            <form action="{{route('login')}}">
+                <button class="navbar_login_btn">
+                    <a>Login</a>
+                </button>
+            </form>
+        </section>
+    @endif
 
     </section>
 </nav>
