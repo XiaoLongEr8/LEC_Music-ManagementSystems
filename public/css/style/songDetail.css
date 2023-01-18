@@ -53,8 +53,9 @@ button {
 
 .view_container{
     display: flex;
-    flex-direction: row;
     gap:1em;
+    align-items: center;
+    /* justify-content:center; */
 }
 
 .view_img{
@@ -63,10 +64,10 @@ button {
 }
 
 .views{
-    display:flex;
+    /* display:flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    text-align: center; */
 }
 
 .release_date_container{

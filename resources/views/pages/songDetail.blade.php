@@ -26,10 +26,10 @@
                     </div>
                     <div class="view_container">
                         <img src="./image/view_eye_img.png" alt="" class="view-img">
-                        <div class="view_number">
-                            <h4 class="views">2,652 Views</h4>
+                        <h4 class="views">2,652 Views</h4>
+                        {{-- <div class="view_number">
                         </div>
-    
+     --}}
                     </div>
                 </div>
                 <div class="release_date_container">
