@@ -30,7 +30,7 @@ button {
 .song_detail_top_container {
     display: flex;
     flex-direction: row;
-    
+
     margin-top: 2em;
     background-color: #D9D9D9;
     width: 100%;
@@ -81,6 +81,7 @@ button {
     margin-right: 300px;
     word-wrap: break-word;
     font-size:32px;
+    white-space: pre-line
 }
 
 .rating{
@@ -97,6 +98,10 @@ button {
     border-radius: 30px;
     background-color: white;
     margin-right: 20px;
+}
+
+.rating_clicked{
+    background-color: #9B9B9B !important;
 }
 
 .song_detail_bottom_container{
@@ -131,6 +136,10 @@ button {
 
 .request_container p {
     font-size: 1.3em;
+}
+
+.request_container form{
+    width: 100%;
 }
 
 .btn_request {

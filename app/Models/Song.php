@@ -32,13 +32,10 @@ class Song extends Model
     public function formattedViews(){
         $number = $this->view_count;
         if ($number >= 1000000000){
-            $simplified = number_format($number / 1000000000, 1) . 'b';
+            $simplified = number_format($number / 1000000000, 1) . 'B';
         }
         else if ($number >= 1000000) {
-            $simplified = number_format($number / 1000000, 1) . 'm';
-        }
-        elseif ($number >= 1000) {
-            $simplified = number_format($number / 1000, 1) . 'k';
+            $simplified = number_format($number / 1000000, 1) . 'M';
         }
         else {
             $simplified = $number;
