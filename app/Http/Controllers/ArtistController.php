@@ -14,8 +14,11 @@ class ArtistController extends Controller
     }
 
     public function show($id){
-        $artist = Artist::where('id', $id)->with('albums')->get();
-        return response()->json($artist);
+        $artist = Artist::where('id', $id)->with(['albums' => function($query){
+            $query->select(['id', 'artist_id', 'album_type_id', 'title', 'cover_image','release_date'])->with('album_type');
+        }])->first();
+
+        return view('pages.artistDetail', compact('artist'));
     }
 
     public function destroy($id){
