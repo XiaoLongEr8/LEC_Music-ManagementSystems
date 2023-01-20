@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{asset('css/layouts/guest.css ')}}">
+    <link rel="stylesheet" href="{{ asset('css/layouts/guest.css ') }}">
     <title>Document</title>
 
     @yield('link')
@@ -22,6 +22,10 @@
     </div>
 
     @include('partials.footer')
+
+    <div>
+        @yield('js')
+    </div>
 
 </body>
 
