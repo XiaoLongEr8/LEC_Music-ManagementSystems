@@ -40,17 +40,12 @@
                   <th class="label_cover">Album Cover</th>
                   <th class="label_name">Album Name</th>
                   <th class="label_date">Album Date</th>
-                  <th class="label_view">View Album</th>
                 </tr>
                 @foreach ($artist->albums as $album)
                   <tr class="artist_album">
                     <td class="album_cover_container"><img src={{asset($album->cover_image)}} alt="" class="album_cover"></td>
                     <td class="album_name"><h3>{{$album->title}}</h3></td>
                     <td class="album_release_date"><h3>{{$album->artistDetailRelease()}}</h3></td>
-
-                    {{-- Waiting for album page --}}
-                    <td class="album_view_btn_container"><a href=""><button class="btn_view_album">View</button></a></td>
-                  </tr>
                 @endforeach
 
               </table>
