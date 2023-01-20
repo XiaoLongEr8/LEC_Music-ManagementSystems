@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Artist;
 use App\Models\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class SongController extends Controller
 {
@@ -37,12 +38,108 @@ class SongController extends Controller
     }
 
     public function displayAll(){
-        $songs = Song::all();
-        return response()->json($songs);
+        $query = Song::select(['id', 'album_id', 'title', 'view_count'])
+        ->with(['album' => function($query){
+            $query->select(['id', 'release_date', 'artist_id'])->with([
+                'artist' => function($query){
+                    $query->select([ 'id', 'fullname']);
+                }
+            ]);
+        }]);
+
+        $songs = $query->paginate(10);
+
+        return view('admin.home_admin', compact('songs'));
     }
 
     public function show($id){
-        $song = Song::where('id', $id)->with('album.artist')->get();
+        $song = Song::where('id', $id)->with(['album' => function($query){
+            $query->select(['id', 'release_date', 'cover_image', 'artist_id'])->with([
+                'artist' => function($query){
+                    $query->select([ 'id', 'fullname']);
+                }
+            ]);
+        }])->first();
+
+        $like_cookie = 'song_'.$song->id.'_liked';
+        $dislike_cookie = 'song_'.$song->id.'_disliked';
+        if(Cookie::has($like_cookie)){
+            $song->like = true;
+        }
+        else if(Cookie::has($dislike_cookie)){
+            $song->dislike = true;
+        }
+
+        return view('pages.songDetail', compact('song'));
+    }
+
+    public function destroy($id){
+        $song = Song::where('id', $id)->first();
+        if(!$song){
+            return back();
+        }
+
+        $song->delete();
+        return back();
+    }
+
+    public function edit(Request $request){
+        $song = Song::where('id', $request->id)->first();
+        if(!$song){
+            return back();
+        }
+
+        $request->validate([
+            'album_id' => ['required', 'exists:album,id'],
+            'title' => ['required', 'string', 'max:100'],
+            'description' => ['required', 'string', 'min:10', 'max:1000'],
+            'lyrics' => ['required', 'string', 'min:10', 'max:7000'],
+            'view_count' => ['required', 'numeric']
+        ]);
+
+        $song->update([
+            'album_id' => $request->album_id,
+            'title' => $request->title,
+            'description' => $request->description,
+            'lyrics' => $request->lyrics,
+            'view_count' => $request->view_count
+        ]);
+
         return response()->json($song);
+    }
+
+    public function updateLike(Request $request){
+        $song_id = $request->id;
+
+        $song = Song::where('id', $song_id)->first();
+
+        if(!$song){
+            return back();
+        }
+
+        $is_like = $request->like;
+        $is_dislike = $request->dislike;
+
+        $like_cookie = 'song_'.$song_id.'_liked';
+        $dislike_cookie = 'song_'.$song_id.'_disliked';
+
+        if($is_like){
+            if(Cookie::has($dislike_cookie)){
+                Cookie::queue(Cookie::forget($dislike_cookie));
+            }
+            if(!Cookie::has($like_cookie)){
+                Cookie::queue(Cookie::make($like_cookie, true, 500));
+            }
+        }
+        elseif($is_dislike) {
+            if(Cookie::has($like_cookie)){
+                Cookie::queue(Cookie::forget($like_cookie));
+            }
+            if(!Cookie::has($dislike_cookie)){
+                Cookie::queue(Cookie::make($dislike_cookie, true, 500));
+            }
+        }
+
+        return back();
     }
 }

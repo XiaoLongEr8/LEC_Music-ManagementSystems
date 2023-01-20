@@ -36,7 +36,7 @@ class LoginController extends Controller
         }
 
         if($request->remember){
-            $minutes = 120;
+            $minutes = 300;
             $values = [
                 'email' => $request->email,
                 'name' => $request->name
@@ -88,7 +88,7 @@ class LoginController extends Controller
 
         Auth::login($user);
 
-        return redirect('/');
+        return redirect()->intended();
     }
 
     public function logout(){

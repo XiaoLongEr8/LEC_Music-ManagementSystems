@@ -14,7 +14,7 @@
         </a>
     </div>
     <div class="navigate_logout">
-        <a href="">
+        <a href="{{route('logout')}}">
             <div class="side_navigation">
                 <ion-icon name="log-out"></ion-icon>
                 <p class="side_navigation_text">Logout</p>

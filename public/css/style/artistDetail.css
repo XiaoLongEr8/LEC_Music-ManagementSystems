@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: "Poppins", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+.separated_container {
+  display: flex;
+
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+.artist_detail{
+  flex-direction: column;
+  align-items: center;
+}
+
+.name {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+
+.artist_detail_top_container {
+  display: flex;
+  flex-direction: row;
+  
+  margin-top: 2em;
+  /* background-color: #D9D9D9; */
+  width: 100%;
+  align-items: center;
+  /* justify-content: center; */
+  padding: 80px;
+}
+
+.artist_picture img{
+  max-width: 250px;
+  max-height: 250px;
+}
+
+.artist_info{
+  margin-left: 40px;
+  display:flex;
+  flex-direction: column;
+  gap:24px;
+}
+
+.view_container{
+  display: flex;
+  gap:1em;
+  align-items: center;
+  /* justify-content:center; */
+}
+
+.view_img{
+  max-width: 50px;
+  max-height: 50px;
+}
+
+/* .views{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+} */
+
+/* .nationality_date_container{
+  margin-left: 120px;
+} */
+
+
+/* .lyrics{
+  
+  font-size:32px;
+} */
+
+/* .rating{
+  width:100%;
+  padding-left: 80px;
+  margin-top: 30px;
+}
+
+.rating button{
+  height: 3.5em;
+  width: 16%;
+
+  border: black 1px solid;
+  border-radius: 30px;
+  background-color: white;
+  margin-right: 20px;
+} */
+
+.artist_album_container, .artist_biography_container{
+  margin-top: 60px;
+  padding: 60px 80px;
+  /* background-color: #D9D9D9; */
+}
+
+  
+.artist_album_title, .artist_biography_title{
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.artist_biography{
+  font-size: 1.3em;
+  margin-top: 20px;
+  word-wrap: break-word;
+}
+
+
+.artist_album_container{
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.artist_album_table{
+  width: 100%;
+  display: table;
+  text-align: center;
+}
+
+.artist_album_label, .artist_album{
+  display:flex;
+  flex-direction: row;  
+  align-items: center;
+}
+
+.artist_album{
+  height: 200px;
+  margin-bottom: 2em;
+}
+
+th, td{
+  height: 4em;
+  /* text-align: center; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.label_cover, .album_cover_container{
+  width: 200px;
+  /* margin-left: 50px; */
+}
+
+.label_name, .album_name{
+  /* margin-left: 150px; */
+  width: 400px;
+}
+
+.label_date, .album_release_date{
+  /* margin-left: 200px; */
+  width: 300px;
+}
+
+.label_view, .album_view_btn_container{
+  /* margin-left: 225px; */
+  width: 150px;
+}
+
+
+.album_cover{
+  display:block;
+  max-width: 200px;
+  aspect-ratio: 1/1;
+  /* height: 100px;
+  width: 100px; */
+}

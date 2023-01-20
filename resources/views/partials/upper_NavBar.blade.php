@@ -37,6 +37,5 @@
                 </form>
             @endauth
         </section>
-
     </section>
 </nav>
