@@ -11,7 +11,7 @@ body {
     display: flex;
 }
 
-.admin-add-song {
+.admin-add-song, .admin-add-artist {
     display: flex;
     flex-direction: column;
 

@@ -7,11 +7,10 @@
 <section class="admin-add-song">
 
     <section class="admin-song-title">
-        <h1>Add New Song</h1>
+        <h2>Add New Song</h2>
     </section>
 
     <section class="admin-form">
-        {{-- Song title, Artist, Views, Release Date, Lyrics --}}
 
         <form action="" method="">
             <label for="input-title">Title</label>
