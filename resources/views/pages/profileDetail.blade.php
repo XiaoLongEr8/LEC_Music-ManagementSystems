@@ -19,8 +19,8 @@
     <section class="main_container">
         <div class="right_container">
             <h1>My Profile</h1>
-            <img src="/image/album-cover.jpeg" alt="not found" class="profile_picture">
-            <h4>Welcome {{ $user->username }}</h4>
+            <img src="{{auth()->user()->profile_pic ? asset('user/'.auth()->user()->profile_pic): asset('image/profile.svg')}}" alt="not found" class="profile_picture">
+            <h4>Welcome {{ auth()->user()->username }}</h4>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Edit Profile Picture
@@ -29,44 +29,49 @@
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <form action="{{route('profile.edit.pic')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img class="img-preview img-fluid mb-3 col-sm-5">
+                                <input class="form-control
+                                    @error('image')
+                                        is-invalid
+                                     @enderror"
+                                    type="file" id="profile_pic" name="profile_pic">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <img class="img-preview img-fluid mb-3 col-sm-5">
-                            <input class="form-control @error('image')
-                is-invalid
-            @enderror"
-                                type="file" id="profile_pic" name="profile_pic">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <form action="">
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </form>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
         <div class="left_container">
             <h1 class="update_title">Update Profile</h1>
-            <form action="" method="POST">
-                @method('PUT')
+            @if($errors->any())
+                {!! implode('', $errors->all('<div>:message</div>')) !!}
+            @endif
+            <form action="{{route('profile.edit.info')}}" method="POST">
                 @csrf
+                @method('PUT')
                 <section class="input_Row_Section">
                     <div class="input_Column_Section">
                         <label for="full_name" class="item_Title">Full Name</label>
                         <input type="text" class="full_Name" id="full_Name_Value" placeholder="Full Name" name="fullname"
-                            value="{{ $user->fullname }}" required>
+                            value="{{ auth()->user()->fullname }}" required>
                     </div>
                 </section>
                 <section class="input_Row_Section">
                     <div class="input_Column_Section">
                         <label for="username" class="item_Title">Username</label>
-                        <input type="text" class="username" id="username" placeholder="Username" name="username" value="{{ $user->username }}"
+                        <input type="text" class="username" id="username" placeholder="Username" name="username" value="{{ auth()->user()->username }}"
                             required>
                     </div>
                 </section>
@@ -74,14 +79,14 @@
                     <div class="input_Column_Section">
                         <label for="email" class="item_Title">Email</label>
                         <input type="email" class="email" id="email_Value" placeholder="Email"
-                            aria-describedby="emailHelp" name="email" value="{{ $user->email }}" required>
+                            aria-describedby="emailHelp" name="email" value="{{ auth()->user()->email }}" required>
                     </div>
                 </section>
                 <section class="input_Row_Section">
                     <div class="input_Column_Section">
                         <label for="phone">Phone Number</label>
                         <input type="tel" id="phone" pattern="^(^\+62|62|^08)(\d{3,4}-?){2}\d{3,4}$"
-                            placeholder="Phone Number" name="phone_num" value="{{ $user->phone_num }}" required>
+                            placeholder="Phone Number" name="phone_num" value="{{ auth()->user()->phone_num }}" required>
                     </div>
                 </section>
                 <div class="Submit_BTN_Container">

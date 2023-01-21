@@ -8,6 +8,7 @@ use App\Http\Controllers\SongController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\SongCreateReqController;
 use App\Http\Controllers\SongEditReqController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +51,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/request/create-song', [SongCreateReqController::class, 'create'])->name('create.song.req');
     Route::post('/request/edit-song', [SongEditReqController::class, 'create'])->name('edit.song.req');
     Route::post('/request/edit-artist', [ArtistEditReqController::class, 'create'])->name('edit.artist.req');
+
+    Route::get('/profile', [UserController::class, 'goToProfile'])->name('profile');
+    Route::put('/profile/edit/pic', [UserController::class, 'editPic'])->name('profile.edit.pic');
+    Route::put('/profile/edit/info', [UserController::class, 'edit'])->name('profile.edit.info');
 });
 
 Route::middleware(['admin'])->group(function () {
@@ -58,8 +63,4 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin-artist', [ArtistController::class, 'displayAll'])->name('admin.artists');
 });
 
-Route::get('/profile', function () {
-    return view('pages.profileDetail', [
-        'user' => auth()->user()
-    ]);
-});
+
