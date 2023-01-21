@@ -32,6 +32,10 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/auth/redirect', [LoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google.login');
 
+Route::get('/add-song', function() {
+    return view('admin.admin_add_song');
+});
+
 // Guest features
 Route::get('/search', [SongController::class, 'search'])->name('search');
 Route::get('/artist/show/{id}', [ArtistController::class, 'show'])->name('artist.show');
