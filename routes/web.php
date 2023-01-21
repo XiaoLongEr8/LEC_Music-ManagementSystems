@@ -38,7 +38,7 @@ Route::get('/artist/show/{id}', [ArtistController::class, 'show'])->name('artist
 Route::get('/song/show/{id}', [SongController::class, 'show'])->name('song.show');
 Route::post('/like-dislike', [SongController::class, 'updateLike']);
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth'])->group(function () {
     Route::get('/request/create-song', function () {
         return view('pages.requestSong');
     })->name('song.create.req');
@@ -52,8 +52,14 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/request/edit-artist', [ArtistEditReqController::class, 'create'])->name('edit.artist.req');
 });
 
-Route::middleware(['admin'])->group(function(){
+Route::middleware(['admin'])->group(function () {
     Route::get('/admin', [SongController::class, 'displayAll'])->name('admin.songs');
 
     Route::get('/admin-artist', [ArtistController::class, 'displayAll'])->name('admin.artists');
+});
+
+Route::get('/profile', function () {
+    return view('pages.profileDetail', [
+        'user' => auth()->user()
+    ]);
 });
