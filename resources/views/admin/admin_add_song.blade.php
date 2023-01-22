@@ -13,29 +13,34 @@
     <section class="admin-form">
 
         <form action="" method="">
-            <label for="input-title">Title</label>
-            <input type="text" class="form-control" id="input-title" placeholder="Enter Title" name="input-title">
+            <label for="input-song-title">Title</label>
+            <input type="text" class="form-control" id="input-song-title" placeholder="Enter Title" name="input-song-title">
 
-            <label for="input-artist">Artist</label>
-            <select id="input-artist" class="form-control" name="input-artist">
-                <option>Choose...</option>
-                {{-- Loop Artist --}}
+            <label for="input-song-artist">Artist</label>
+            <select id="input-song-artist" class="form-control" name="input-song-artist">
+                {{-- @foreach($album as $data)
+                    <option value={{$data->id}}>{{$data->fullname}}</option>
+                @endforeach --}}
             </select>
 
-            <label for="input-lyric">Description</label>
-            <textarea class="form-control" id="input-description" rows="3" name="input-description"></textarea>
+            <label for="input-song-description">Description</label>
+            <textarea class="form-control" id="input-description" rows="3" name="input-song-description"></textarea>
 
-            <label for="input-view">Views</label>
-            <input type="text" class="form-control" id="input-view" placeholder="Enter Number of Views" name="input-view">
+            <label for="input-song-view">Views</label>
+            <input type="text" class="form-control" id="input-song-view" placeholder="Enter Number of Views" name="input-song-view">
 
-            <label for="input-release-date">Release Date</label>
-            <input type="text" class="form-control" id="input-release-date" placeholder="Enter Release Date" name="input-release-date">
+            <label for="input-song-release-date">Release Date</label>
+            <input type="text" class="form-control" id="input-song-release-date" placeholder="Enter Release Date" name="input-song-release-date">
 
-            <label for="input-lyric">Song Lyric</label>
-            <textarea class="form-control" id="input-lyric" rows="8" name="input-lyric"></textarea>
+            <label for="input-song-lyric">Song Lyric</label>
+            <textarea class="form-control" id="input-song-lyric" rows="8" name="input-song-lyric"></textarea>
 
-            <label for="input-album">Album Picture</label>
-            <input type="file" class="form-control-file" id="input-album" name="input-album">
+            <label for="input-song-album">Album</label>
+            <select id="input-song-album" class="form-control" name="input-song-album">
+                {{-- @foreach($album as $data)
+                    <option value={{$data->id}}>{{$data->name}}</option>
+                @endforeach --}}
+            </select>
 
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="submit" class="btn btn-danger">Cancel</button>
