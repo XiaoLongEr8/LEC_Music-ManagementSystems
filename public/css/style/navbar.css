@@ -71,21 +71,32 @@
 
 .navbar_login_container {
     height: 3em;
-    width: 10%;
-    align-items: center;
-    border: 2px solid black;
-    border-radius: 20px;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
 .navbar_login_btn {
-    background-color: white;
-    border: none;
-    margin-top: 10%;
-}
+    height: 3em;
+    width: 6em;
 
-.navbar_login_btn a {
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: white;
+
     font-size: large;
     font-weight: normal;
+}
+
+.navbar_profile_picture_container {
+    margin-left: 0.4em;
+}
+
+.navbar_profile_picture {
+    height: 3em;
+    width: 3em;
+    border: 2px solid black;
+    border-radius: 50%;
 }
