@@ -21,6 +21,9 @@
             <label for="input-artist-bio">Bio</label>
             <textarea class="form-control" id="input-artist-bio" rows="5" name="input-artist-bio"></textarea>
 
+            <label for="input-artist-nationality">Nationality</label>
+            <input type="text" class="form-control" id="input-artist-nationality" placeholder="Enter Nationality" name="input-artist-nationality">
+
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="submit" class="btn btn-danger">Cancel</button>
         </form>
