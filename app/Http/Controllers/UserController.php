@@ -8,9 +8,17 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+    public function goToProfile(){
+        if(!Auth::check()){
+            return back();
+        }
+
+        return view('pages.profileDetail');
+    }
+
     public function editPic(Request $request){
 
-        if(Auth::check()){
+        if(!Auth::check()){
             return back();
         }
 
@@ -33,21 +41,21 @@ class UserController extends Controller
             'profile_pic' => $path_name
         ]);
 
-        return response()->json($user);
+        return back();
     }
 
     public function edit(Request $request){
-        if(Auth::check()){
+        if(!Auth::check()){
             return back();
         }
 
         $user = auth()->user();
-
+        // dd($request);
         $request->validate([
             'fullname' => ['required'],
             'username' => ['required'],
-            'phone_num' => ['required', 'string', 'regex:/^(\+62|62)?[\s-]?0?8[1-9]{1}\d{1}[\s-]?\d{4}[\s-]?\d{2,5}$/'],
-            'email' => ['required', 'string', 'email', 'unique:users,email']
+            'phone_num' => ['required', 'string', 'regex:/^(^\+62|62|^08)(\d{3,4}-?){2}\d{3,4}$/'],
+            'email' => ['required', 'string', 'email', 'unique:users,email,'.$user->id]
         ]);
 
         $user->update([
@@ -57,6 +65,6 @@ class UserController extends Controller
             'email' => $request->email
         ]);
 
-        return response()->json($user);
+        return back();
     }
 }
