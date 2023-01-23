@@ -29,7 +29,7 @@
                         Logout
                     </button>
                 </form>
-                <a class="navbar_profile_picture_container" href="#">
+                <a class="navbar_profile_picture_container" href="{{route('profile')}}">
                     <img src="{{ asset('image/ProfilePic.jpg') }}" alt="" class="navbar_profile_picture">
                 </a>
             </section>

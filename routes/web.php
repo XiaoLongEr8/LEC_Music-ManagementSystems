@@ -41,6 +41,10 @@ Route::get('/add-artist', function() {
     return view('admin.admin_add_artist');
 });
 
+Route::get('/add-album', function() {
+    return view('admin.admin_add_album');
+});
+
 // Guest features
 Route::get('/search', [SongController::class, 'search'])->name('search');
 Route::get('/artist/show/{id}', [ArtistController::class, 'show'])->name('artist.show');
