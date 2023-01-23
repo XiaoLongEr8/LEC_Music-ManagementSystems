@@ -18,8 +18,15 @@
 
             <label for="input-song-artist">Artist</label>
             <select id="input-song-artist" class="form-control" name="input-song-artist">
-                {{-- @foreach($album as $data)
-                    <option value={{$data->id}}>{{$data->fullname}}</option>
+                {{-- @foreach($song as $data)
+                    <option value={{$data->artist->id}}>{{$data->artist->fullname}}</option>
+                @endforeach --}}
+            </select>
+
+            <label for="input-song-genre">Genre</label>
+            <select id="input-song-genre" class="form-control" name="input-song-genre">
+                {{-- @foreach($song as $data)
+                    <option value={{$data->genre->id}}>{{$data->genre->name}}</option>
                 @endforeach --}}
             </select>
 
@@ -37,8 +44,8 @@
 
             <label for="input-song-album">Album</label>
             <select id="input-song-album" class="form-control" name="input-song-album">
-                {{-- @foreach($album as $data)
-                    <option value={{$data->id}}>{{$data->name}}</option>
+                {{-- @foreach($song as $data)
+                    <option value={{$data->album->id}}>{{$data->album->title}}</option>
                 @endforeach --}}
             </select>
 

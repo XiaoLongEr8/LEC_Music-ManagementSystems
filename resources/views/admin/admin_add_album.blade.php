@@ -7,13 +7,20 @@
 <section class="admin-add-album">
 
     <section class="admin-album-title">
-        <h2>Add New Artist</h2>
+        <h2>Add New Album</h2>
     </section>
 
     <section class="admin-form">
         <form action="" method="">
             <label for="input-album-name">Title</label>
             <input type="text" class="form-control" id="input-album-name" placeholder="Enter Title" name="input-album-name">
+
+            <label for="input-album-artist">Artist</label>
+            <select id="input-album-artist" class="form-control" name="input-album-artist">
+                {{-- @foreach($album as $data)
+                    <option value={{$data->artist->id}}>{{$data->artist->fullname}}</option>
+                @endforeach --}}
+            </select>
 
             <label for="input-album-description">Description</label>
             <textarea class="form-control" id="input-album-description" rows="3" name="input-album-description"></textarea>
