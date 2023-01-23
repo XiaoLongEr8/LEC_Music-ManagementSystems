@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{asset('css/admin/admin_artist.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin/admin_home.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin/side_navbar.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin/admin_add.css')}}">
 
     {{-- Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
