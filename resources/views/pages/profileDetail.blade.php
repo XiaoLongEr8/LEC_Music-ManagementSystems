@@ -55,9 +55,6 @@
         </div>
         <div class="left_container">
             <h1 class="update_title">Update Profile</h1>
-            @if($errors->any())
-                {!! implode('', $errors->all('<div>:message</div>')) !!}
-            @endif
             <form action="{{route('profile.edit.info')}}" method="POST">
                 @csrf
                 @method('PUT')
