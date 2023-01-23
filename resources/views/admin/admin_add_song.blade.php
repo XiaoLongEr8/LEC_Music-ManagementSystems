@@ -23,12 +23,19 @@
                 @endforeach --}}
             </select>
 
-            <label for="input-song-genre">Genre</label>
-            <select id="input-song-genre" class="form-control" name="input-song-genre">
-                {{-- @foreach($song as $data)
-                    <option value={{$data->genre->id}}>{{$data->genre->name}}</option>
-                @endforeach --}}
-            </select>
+            <div id="input-song">
+                <label for="input-song-genre">Genre</label>
+                <select id="input-song-genre" class="form-control" name="input-song-genre[]">
+                    {{-- @foreach($song as $data)
+                        <option value={{$data->genre->id}}>{{$data->genre->name}}</option>
+                    @endforeach --}}
+                </select>
+            </div>
+
+            <div id="genre-button" style="margin-bottom: 2rem">
+                <button type="button" class="btn btn-primary" id="btn_add">Add</button>
+                <button type="button" class="btn btn-danger" id="btn_remove">Remove</button>
+            </div>
 
             <label for="input-song-description">Description</label>
             <textarea class="form-control" id="input-description" rows="3" name="input-song-description"></textarea>
@@ -56,5 +63,58 @@
     </section>
 
 </section>
+
+{{-- <script>
+    document.getElementById('btn_add').addEventListener('click', function() {
+        var select = document.createElement('select');
+            select.id = "extra";
+            select.classList.add('form-control');
+            select.name = 'input-song-genre[]';
+            select.required = true;
+
+        @foreach ($song as $data)
+            var option = document.createElement('option');
+                option.value = '{{$data->genre->id}}';
+                option.text = '{{$data->genre->name}}';
+                select.appendChild(option);
+        @endforeach
+
+        var container = document.getElementById('input-song')
+        container.appendChild(select);
+    });
+
+    document.getElementById('btn_remove').addEventListener('click', function() {
+        var last = document.getElementById("extra");
+
+        last.remove();
+    });
+</script> --}}
+
+{{-- Dummy Java yg bekerja --}}
+{{-- <script>
+    document.getElementById('btn_add').addEventListener('click', function() {
+
+        var select = document.createElement('select');
+            select.id = "extra";
+            select.classList.add('form-control');
+            select.name = 'input-song-genre[]';
+            select.required = true;
+
+        var option = document.createElement('option');
+            option.value = 1;
+            option.text = 'Yes';
+            select.appendChild(option);
+
+        var container = document.getElementById('input-song');
+        container.appendChild(select);
+    });
+
+    document.getElementById('btn_remove').addEventListener('click', function() {
+
+    var last = document.getElementById("extra");
+
+    last.remove();
+});
+</script> --}}
 
 @endsection
