@@ -22,20 +22,25 @@
             </div>
         </section>
 
-        <section class="navbar_login_container">
-            @auth
-                <form action="{{ route('logout') }}">
+        @auth
+            <section class="navbar_login_container">
+                <form action="{{ route('logout') }}" class="navbar_login_button_form">
                     <button class="navbar_login_btn">
-                        <a>Logout</a>
+                        Logout
                     </button>
                 </form>
-            @else
-                <form action="{{ route('login') }}">
+                <a class="navbar_profile_picture_container" href="#">
+                    <img src="{{ asset('image/ProfilePic.jpg') }}" alt="" class="navbar_profile_picture">
+                </a>
+            </section>
+        @else
+            <section class="navbar_login_container">
+                <form action="{{ route('login') }}" class="navbar_login_button_form">
                     <button class="navbar_login_btn">
-                        <a>Login</a>
+                        Login
                     </button>
                 </form>
-            @endauth
-        </section>
+            </section>
+        @endauth
     </section>
 </nav>
