@@ -35,4 +35,12 @@ class Album extends Model
     public function formattedReleaseDate(){
         return Carbon::parse($this->release_date)->format('d/m/Y');
     }
+
+    public function songDetailRelease(){
+        return Carbon::parse($this->release_date)->format('F d, Y');
+    }
+
+    public function artistDetailRelease(){
+        return Carbon::parse($this->release_date)->format('d F Y');
+    }
 }

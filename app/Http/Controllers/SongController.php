@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Artist;
 use App\Models\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class SongController extends Controller
 {
@@ -52,8 +53,24 @@ class SongController extends Controller
     }
 
     public function show($id){
-        $song = Song::where('id', $id)->with('album.artist')->get();
-        return response()->json($song);
+        $song = Song::where('id', $id)->with(['album' => function($query){
+            $query->select(['id', 'release_date', 'cover_image', 'artist_id'])->with([
+                'artist' => function($query){
+                    $query->select([ 'id', 'fullname']);
+                }
+            ]);
+        }])->first();
+
+        $like_cookie = 'song_'.$song->id.'_liked';
+        $dislike_cookie = 'song_'.$song->id.'_disliked';
+        if(Cookie::has($like_cookie)){
+            $song->like = true;
+        }
+        else if(Cookie::has($dislike_cookie)){
+            $song->dislike = true;
+        }
+
+        return view('pages.songDetail', compact('song'));
     }
 
     public function destroy($id){
@@ -89,5 +106,40 @@ class SongController extends Controller
         ]);
 
         return response()->json($song);
+    }
+
+    public function updateLike(Request $request){
+        $song_id = $request->id;
+
+        $song = Song::where('id', $song_id)->first();
+
+        if(!$song){
+            return back();
+        }
+
+        $is_like = $request->like;
+        $is_dislike = $request->dislike;
+
+        $like_cookie = 'song_'.$song_id.'_liked';
+        $dislike_cookie = 'song_'.$song_id.'_disliked';
+
+        if($is_like){
+            if(Cookie::has($dislike_cookie)){
+                Cookie::queue(Cookie::forget($dislike_cookie));
+            }
+            if(!Cookie::has($like_cookie)){
+                Cookie::queue(Cookie::make($like_cookie, true, 500));
+            }
+        }
+        elseif($is_dislike) {
+            if(Cookie::has($like_cookie)){
+                Cookie::queue(Cookie::forget($like_cookie));
+            }
+            if(!Cookie::has($dislike_cookie)){
+                Cookie::queue(Cookie::make($dislike_cookie, true, 500));
+            }
+        }
+
+        return back();
     }
 }

@@ -23,42 +23,51 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/result', function () {
-    return view('pages.searchResult');
-});
-
-Route::get('/detail', function () {
-    return view('pages.songDetail');
-});
-
+// Authentication
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login');
-
-Route::get('/auth/redirect', [LoginController::class, 'redirectToGoogle'])->name('google.redirect');
-Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google.login');
-
-Route::get('/search', [SongController::class, 'search'])->name('search');
-Route::get('/artist/show/{id}', [ArtistController::class, 'show'])->name('artist.show');
-Route::get('/song/show/{id}', [SongController::class, 'show'])->name('song.show');
-
 Route::get('/register', [RegisterController::class, 'goToRegister'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/auth/redirect', [LoginController::class, 'redirectToGoogle'])->name('google.redirect');
+Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google.login');
 
-Route::get('/request/create-song', function () {
-    return view('pages.requestSong');
-})->name('song.create.req');
+Route::get('/add-song', function() {
+    return view('admin.admin_add_song');
+});
 
-Route::get('/request/edit-song/{id}', [SongEditReqController::class, 'goToForm'])->name('song.edit.req');
+Route::get('/add-artist', function() {
+    return view('admin.admin_add_artist');
+});
 
-Route::get('/request/edit-artist/{id}', [ArtistEditReqController::class, 'goToForm'])->name('artist.edit.req');
+// Guest features
+Route::get('/search', [SongController::class, 'search'])->name('search');
+Route::get('/artist/show/{id}', [ArtistController::class, 'show'])->name('artist.show');
+Route::get('/song/show/{id}', [SongController::class, 'show'])->name('song.show');
+Route::post('/like-dislike', [SongController::class, 'updateLike']);
 
-Route::post('/request/create-song', [SongCreateReqController::class, 'create'])->name('create.song.req');
-Route::post('/request/edit-song', [SongEditReqController::class, 'create'])->name('edit.song.req');
-Route::post('/request/edit-artist', [ArtistEditReqController::class, 'create'])->name('edit.artist.req');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/request/create-song', function () {
+        return view('pages.requestSong');
+    })->name('song.create.req');
 
-Route::middleware(['admin'])->group(function(){
+    Route::get('/request/edit-song/{id}', [SongEditReqController::class, 'goToForm'])->name('song.edit.req');
+
+    Route::get('/request/edit-artist/{id}', [ArtistEditReqController::class, 'goToForm'])->name('artist.edit.req');
+
+    Route::post('/request/create-song', [SongCreateReqController::class, 'create'])->name('create.song.req');
+    Route::post('/request/edit-song', [SongEditReqController::class, 'create'])->name('edit.song.req');
+    Route::post('/request/edit-artist', [ArtistEditReqController::class, 'create'])->name('edit.artist.req');
+});
+
+Route::middleware(['admin'])->group(function () {
     Route::get('/admin', [SongController::class, 'displayAll'])->name('admin.songs');
 
     Route::get('/admin-artist', [ArtistController::class, 'displayAll'])->name('admin.artists');
+});
+
+Route::get('/profile', function () {
+    return view('pages.profileDetail', [
+        'user' => auth()->user()
+    ]);
 });
