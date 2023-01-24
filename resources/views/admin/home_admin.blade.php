@@ -46,10 +46,16 @@
                 @endforeach
             </table>
             {{$songs->links()}}
-            <a href="">
+            <a href="{{route('redirect.create.song')}}">
                 <button class="add-new-item">
                     <ion-icon name="add-outline"></ion-icon>
                     <p>Add New Song</p>
+                </button>
+            </a>
+            <a href="{{route('redirect.create.album')}}">
+                <button class="add-new-item">
+                    <ion-icon name="add-outline"></ion-icon>
+                    <p>Add New Album</p>
                 </button>
             </a>
         </div>

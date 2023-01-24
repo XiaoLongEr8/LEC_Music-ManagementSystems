@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\ArtistEditReqController;
 use App\Http\Controllers\Auth\LoginController;
@@ -72,9 +73,8 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/delete-artist/{id}', [ArtistController::class, 'destroy'])->name('delete.artist');
     Route::post('/edit-artist/{id}', [ArtistController::class, 'edit'])->name('edit.artist');
 
-    Route::get('/add-album', function() {
-        return view('admin.admin_add_album');
-    });
+    Route::get('/add-album', [AlbumController::class, 'redirectCreate'])->name('redirect.create.album');
+    Route::post('/add-album', [AlbumController::class, 'create'])->name('create.album');
 });
 
 

@@ -11,7 +11,7 @@
     </section>
 
     <section class="admin-form">
-        <form action="" method="">
+        <form action="{{route('create.album')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
             @foreach ($errors->all() as $error)
@@ -19,33 +19,33 @@
             @endforeach
 
             <label for="input-album-name">Title</label>
-            <input type="text" class="form-control" id="input-album-name" placeholder="Enter Title" name="input-album-name">
+            <input type="text" class="form-control" id="input-album-name" placeholder="Enter Title" name="title">
 
             <label for="input-album-artist">Artist</label>
-            <select id="input-album-artist" class="form-control" name="input-album-artist">
-                {{-- @foreach($album as $data)
-                    <option value={{$data->artist->id}}>{{$data->artist->fullname}}</option>
-                @endforeach --}}
+            <select id="input-album-artist" class="form-control" name="artist_id">
+                @foreach($artists as $artist)
+                    <option value={{$artist->id}}>{{$artist->fullname}}</option>
+                @endforeach
             </select>
 
             <label for="input-album-description">Description</label>
-            <textarea class="form-control" id="input-album-description" rows="3" name="input-album-description"></textarea>
+            <textarea class="form-control" id="input-album-description" rows="3" name="description"></textarea>
 
             <label for="input-album-release-date">Release Date</label>
-            <input type="text" class="form-control" id="input-album-release-date" placeholder="Enter Release Date" name="input-album-release-date">
+            <input type="date" class="form-control" id="input-album-release-date" placeholder="Enter Release Date" name="release_date">
 
-            <label for="input-album-contributor">Contributor</label>
-            <input type="text" class="form-control" id="input-album-contributor" placeholder="Enter Contributor" name="input-album-contributor">
+            <label for="input-album-contributors">Contributors</label>
+            <textarea class="form-control" id="input-album-contributors" rows="3" name="contributors"></textarea>
 
             <label for="input-album-type">Type</label>
-            <select id="input-album-type" class="form-control" name="input-album-type">
-                <option value=1>Single</option>
-                <option value=2>Long Playlist</option>
-                <option value=3>Extended Playlist</option>
+            <select id="input-album-type" class="form-control" name="album_type_id">
+                @foreach ($types as $type)
+                    <option value={{$type->id}}>{{$type->name}}</option>
+                @endforeach
             </select>
 
             <label for="input-album-cover">Cover Image</label>
-            <input type="file" class="form-control-file" id="input-album-cover" name="input-album-cover">
+            <input type="file" class="form-control-file" id="input-album-cover" name="cover_image">
 
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="button" onclick="history.back()" class="btn btn-danger">Cancel</button>
