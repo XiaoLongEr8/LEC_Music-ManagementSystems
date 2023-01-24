@@ -34,11 +34,11 @@ class UserController extends Controller
         }
 
         $path = $request->file('profile_pic');
-        $path_name = 'user/' . uniqid() . $request->username . '.' . $path->getClientOriginalExtension();
+        $path_name = uniqid() . $request->username . '.' . $path->getClientOriginalExtension();
         Storage::putFileAs('user', $path, $path_name);
 
         $user->update([
-            'profile_pic' => $path_name
+            'profile_pic' => 'user/' . $path_name
         ]);
 
         return back();

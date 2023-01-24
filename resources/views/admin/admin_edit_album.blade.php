@@ -12,6 +12,12 @@
 
     <section class="admin-form">
         <form action="" method="">
+            @csrf
+
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger">{{ $error }}</div>
+            @endforeach
+
             <label for="input-album-name">Title</label>
             <input type="text" class="form-control" id="input-album-name" placeholder="Enter Title" name="input-album-name">
 

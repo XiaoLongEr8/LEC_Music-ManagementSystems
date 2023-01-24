@@ -114,7 +114,7 @@ class SongController extends Controller
 
         $song->genres()->attach($genres);
 
-        return back();
+        return redirect()->route('admin.songs');
     }
 
     public function edit(Request $request){

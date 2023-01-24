@@ -14,6 +14,11 @@
 
         <form action="{{route('create.song')}}" method="POST">
             @csrf
+
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger">{{ $error }}</div>
+            @endforeach
+
             <label for="input-song-title">Title</label>
             <input type="text" class="form-control" id="input-song-title" placeholder="Enter Title" name="title">
 

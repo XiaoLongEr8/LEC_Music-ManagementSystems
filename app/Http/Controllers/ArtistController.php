@@ -21,6 +21,32 @@ class ArtistController extends Controller
         return view('pages.artistDetail', compact('artist'));
     }
 
+    public function redirectCreate(){
+        return view('admin.admin_add_artist');
+    }
+
+    public function create(Request $request){
+        $request->validate([
+            'fullname' => ['required', 'string', 'max:50'],
+            'profile_pic' => ['required', 'image', 'max:5000'],
+            'bio' => ['required', 'string', 'max:1000'],
+            'nationality' => ['required', 'string', 'max:100']
+        ]);
+
+        $path = $request->file('profile_pic');
+        $path_name = uniqid() . $request->fullname . '.' . $path->getClientOriginalExtension();
+        Storage::putFileAs('artist', $path, $path_name);
+
+        Artist::create([
+            'fullname' => $request->fullname,
+            'profile_pic' => 'artist/' . $path_name,
+            'bio' => $request->bio,
+            'nationality' => $request->nationality
+        ]);
+
+        return redirect()->route('admin.artists');
+    }
+
     public function destroy($id){
         $artist = Artist::where('id', $id)->first();
         if(!$artist){
@@ -55,7 +81,7 @@ class ArtistController extends Controller
 
         $artist->update([
             'fullname' => $request->fullname,
-            'profile_pic' => $path_name,
+            'profile_pic' => 'artist/' . $path_name,
             'bio' => $request->bio,
             'nationality' => $request->nationality
         ]);
