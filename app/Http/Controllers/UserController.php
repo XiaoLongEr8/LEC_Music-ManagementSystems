@@ -28,7 +28,7 @@ class UserController extends Controller
             'profile_pic' => ['required', 'image', 'max:5000']
         ]);
 
-        $user_path = storage_path('app/user/'.$user->profile_pic);
+        $user_path = storage_path('app/'.$user->profile_pic);
         if (file_exists($user_path)) {
             unlink($user_path);
         }

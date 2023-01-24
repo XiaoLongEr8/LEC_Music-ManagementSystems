@@ -57,6 +57,15 @@ class ArtistController extends Controller
         return back();
     }
 
+    public function redirectEdit($id){
+        $artist = Artist::where('id', $id)->first();
+        if(!$artist){
+            return back();
+        }
+
+        return view('admin.admin_edit_artist', compact('artist'));
+    }
+
     public function edit(Request $request){
         $artist = Artist::where('id', $request->id)->first();
         if(!$artist){
@@ -65,27 +74,38 @@ class ArtistController extends Controller
 
         $request->validate([
             'fullname' => ['required', 'string', 'max:50'],
-            'profile_pic' => ['required', 'image', 'max:5000'],
+            'profile_pic' => ['nullable', 'image', 'max:5000'],
             'bio' => ['required', 'string', 'max:1000'],
             'nationality' => ['required', 'string', 'max:100']
         ]);
 
-        $artist_path = storage_path('app/artist/'.$artist->profile_pic);
-        if (file_exists($artist_path)) {
-            unlink($artist_path);
+        $path = $request->file('profile_pic');
+
+        if($path){
+            $artist_path = storage_path('app/'.$artist->profile_pic);
+            if (file_exists($artist_path)) {
+                unlink($artist_path);
+            }
+
+
+            $path_name = uniqid() . $request->fullname . '.' . $path->getClientOriginalExtension();
+            Storage::putFileAs('artist', $path, $path_name);
+
+            $artist->update([
+                'fullname' => $request->fullname,
+                'profile_pic' => 'artist/' . $path_name,
+                'bio' => $request->bio,
+                'nationality' => $request->nationality
+            ]);
+        }
+        else{
+            $artist->update([
+                'fullname' => $request->fullname,
+                'bio' => $request->bio,
+                'nationality' => $request->nationality
+            ]);
         }
 
-        $path = $request->file('profile_pic');
-        $path_name = uniqid() . $request->fullname . '.' . $path->getClientOriginalExtension();
-        Storage::putFileAs('artist', $path, $path_name);
-
-        $artist->update([
-            'fullname' => $request->fullname,
-            'profile_pic' => 'artist/' . $path_name,
-            'bio' => $request->bio,
-            'nationality' => $request->nationality
-        ]);
-
-        return response()->json($artist);
+        return redirect()->route('admin.artists');
     }
 }

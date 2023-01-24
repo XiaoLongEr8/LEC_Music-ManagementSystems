@@ -12,8 +12,9 @@
                     <th class="col-artist-1">No</th>
                     <th class="col-artist-2">Artist</th>
                     <th class="col-artist-3">Nationality</th>
-                    <th class="col-artist-4">Edit</th>
-                    <th class="col-artist-5">Delete</th>
+                    <th class="col-artist-4">Detail</th>
+                    <th class="col-artist-5">Edit</th>
+                    <th class="col-artist-6">Delete</th>
                 </tr>
 
 
@@ -23,7 +24,12 @@
                     <td>{{$artist->fullname}}</td>
                     <td>{{$artist->nationality}}</td>
                     <td>
-                        <a href="">
+                        <a href="{{route('artist.show', $artist->id)}}">
+                            <button class="table-adminbutton viewlyrics">Artist Detail</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{route('redirect.edit.artist', $artist->id)}}">
                             <button class="table-adminbutton editlyrics">Edit</button>
                         </a>
                     </td>

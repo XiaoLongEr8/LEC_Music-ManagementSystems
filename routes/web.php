@@ -72,7 +72,8 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/add-artist', [ArtistController::class, 'redirectCreate'])->name('redirect.create.artist');
     Route::post('/add-artist', [ArtistController::class, 'create'])->name('create.artist');
     Route::post('/delete-artist/{id}', [ArtistController::class, 'destroy'])->name('delete.artist');
-    Route::post('/edit-artist/{id}', [ArtistController::class, 'edit'])->name('edit.artist');
+    Route::get('/edit-artist/{id}', [ArtistController::class, 'redirectEdit'])->name('redirect.edit.artist');
+    Route::patch('/edit-artist', [ArtistController::class, 'edit'])->name('edit.artist');
 
     Route::get('/add-album', [AlbumController::class, 'redirectCreate'])->name('redirect.create.album');
     Route::post('/add-album', [AlbumController::class, 'create'])->name('create.album');
