@@ -75,21 +75,46 @@ class SongController extends Controller
         return view('pages.songDetail', compact('song'));
     }
 
-    public function destroy($id){
-        $song = Song::where('id', $id)->first();
-        if(!$song){
-            return back();
-        }
-
-        $song->delete();
-        return back();
-    }
-
     public function redirectCreate(){
         $genres = Genre::select(['id', 'name'])->get();
-        $albums = Album::select(['id', 'title'])->get();
+        $albums = Album::select(['id', 'artist_id', 'title'])->with([
+            'artist' => function($query){
+                $query->select([ 'id', 'fullname']);
+            }
+        ])->get();
 
         return view('admin.admin_add_song', compact('genres', 'albums'));
+    }
+
+    public function create(Request $request){
+        $request->validate([
+            'genres' => ['required', 'array'],
+            'album_id' => ['required', 'exists:albums,id'],
+            'title' => ['required', 'string', 'max:100'],
+            'description' => ['required', 'string', 'min:10', 'max:1000'],
+            'lyrics' => ['required', 'string', 'min:10', 'max:7000'],
+            'view_count' => ['required', 'numeric', 'min:0']
+        ]);
+
+        $genres = $request->get('genres');
+        foreach ($genres as $genre) {
+            $exists = Genre::where('id', $genre)->exists();
+            if (!$exists) {
+                return back();
+            }
+        }
+
+        $song = Song::create([
+            'album_id' => $request->album_id,
+            'title' => $request->title,
+            'description'=> $request->description,
+            'lyrics' => $request->lyrics,
+            'view_count' => $request->view_count
+        ]);
+
+        $song->genres()->attach($genres);
+
+        return back();
     }
 
     public function edit(Request $request){
@@ -115,6 +140,16 @@ class SongController extends Controller
         ]);
 
         return response()->json($song);
+    }
+
+    public function destroy($id){
+        $song = Song::where('id', $id)->first();
+        if(!$song){
+            return back();
+        }
+
+        $song->delete();
+        return back();
     }
 
     public function updateLike(Request $request){

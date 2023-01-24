@@ -33,11 +33,11 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/auth/redirect', [LoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google.login');
 
-Route::get('/add-song', [SongController::class, 'redirectCreate']);
+Route::get('/add-song', [SongController::class, 'redirectCreate'])->name('redirect.create.song');
+Route::post('/add-song', [SongController::class, 'create'])->name('create.song');
 
-Route::get('/add-artist', function() {
-    return view('admin.admin_add_artist');
-});
+Route::get('/add-artist', [ArtistController::class, 'redirectCreate'])->name('redirect.create.artist');
+Route::post('/add-artist', [ArtistController::class, 'create'])->name('create.artist');
 
 Route::get('/add-album', function() {
     return view('admin.admin_add_album');

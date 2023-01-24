@@ -12,13 +12,14 @@
 
     <section class="admin-form">
 
-        <form action="" method="">
+        <form action="{{route('create.song')}}" method="POST">
+            @csrf
             <label for="input-song-title">Title</label>
-            <input type="text" class="form-control" id="input-song-title" placeholder="Enter Title" name="input-song-title">
+            <input type="text" class="form-control" id="input-song-title" placeholder="Enter Title" name="title">
 
             <div id="input-song">
                 <label for="input-song-genre">Genre</label>
-                <select id="input-song-genre" class="form-control" name="input-song-genre[]">
+                <select id="input-song-genre" class="form-control" name="genres[]">
                     @foreach($genres as $genre)
                         <option value={{$genre->id}}>{{$genre->name}}</option>
                     @endforeach
@@ -31,21 +32,18 @@
             </div>
 
             <label for="input-song-description">Description</label>
-            <textarea class="form-control" id="input-description" rows="3" name="input-song-description"></textarea>
+            <textarea class="form-control" id="input-description" rows="3" name="description"></textarea>
 
             <label for="input-song-view">Views</label>
-            <input type="text" class="form-control" id="input-song-view" placeholder="Enter Number of Views" name="input-song-view">
-
-            <label for="input-song-release-date">Release Date</label>
-            <input type="text" class="form-control" id="input-song-release-date" placeholder="Enter Release Date" name="input-song-release-date">
+            <input type="number" class="form-control" id="input-song-view" placeholder="Enter Number of Views" name="view_count">
 
             <label for="input-song-lyric">Song Lyric</label>
-            <textarea class="form-control" id="input-song-lyric" rows="8" name="input-song-lyric"></textarea>
+            <textarea class="form-control" id="input-song-lyric" rows="8" name="lyrics"></textarea>
 
             <label for="input-song-album">Album</label>
-            <select id="input-song-album" class="form-control" name="input-song-album">
+            <select id="input-song-album" class="form-control" name="album_id">
                 @foreach($albums as $album)
-                    <option value={{$album->id}}>{{$album->title}}</option>
+                    <option value={{$album->id}}>{{$album->title}} by {{$album->artist->fullname}}</option>
                 @endforeach
             </select>
 
@@ -62,7 +60,7 @@
         var select = document.createElement('select');
             select.id = "extra";
             select.classList.add('form-control');
-            select.name = 'input-song-genre[]';
+            select.name = 'genres[]';
             select.required = true;
 
         @foreach ($genres as $genre)
