@@ -77,9 +77,9 @@
                             Remember me
                         </label>
                     </div>
-                    <div class="forget_password_container">
+                    {{-- <div class="forget_password_container">
                         <a href="">Forget password?</a>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="Submit_BTN_Container">

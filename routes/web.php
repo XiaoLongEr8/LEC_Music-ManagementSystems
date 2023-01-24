@@ -33,16 +33,6 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/auth/redirect', [LoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google.login');
 
-Route::get('/add-song', [SongController::class, 'redirectCreate'])->name('redirect.create.song');
-Route::post('/add-song', [SongController::class, 'create'])->name('create.song');
-
-Route::get('/add-artist', [ArtistController::class, 'redirectCreate'])->name('redirect.create.artist');
-Route::post('/add-artist', [ArtistController::class, 'create'])->name('create.artist');
-
-Route::get('/add-album', function() {
-    return view('admin.admin_add_album');
-});
-
 // Guest features
 Route::get('/search', [SongController::class, 'search'])->name('search');
 Route::get('/artist/show/{id}', [ArtistController::class, 'show'])->name('artist.show');
@@ -71,6 +61,20 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin', [SongController::class, 'displayAll'])->name('admin.songs');
 
     Route::get('/admin-artist', [ArtistController::class, 'displayAll'])->name('admin.artists');
+
+    Route::get('/add-song', [SongController::class, 'redirectCreate'])->name('redirect.create.song');
+    Route::post('/add-song', [SongController::class, 'create'])->name('create.song');
+    Route::post('/delete-song/{id}', [SongController::class, 'destroy'])->name('delete.song');
+    Route::post('/edit-song/{id}', [SongController::class, 'edit'])->name('edit.song');
+
+    Route::get('/add-artist', [ArtistController::class, 'redirectCreate'])->name('redirect.create.artist');
+    Route::post('/add-artist', [ArtistController::class, 'create'])->name('create.artist');
+    Route::post('/delete-artist/{id}', [ArtistController::class, 'destroy'])->name('delete.artist');
+    Route::post('/edit-artist/{id}', [ArtistController::class, 'edit'])->name('edit.artist');
+
+    Route::get('/add-album', function() {
+        return view('admin.admin_add_album');
+    });
 });
 
 

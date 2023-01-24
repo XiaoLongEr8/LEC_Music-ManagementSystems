@@ -117,7 +117,7 @@
             </form>
 
             <section class="anchor_Section">
-                <h4 class="Login_Anchor">Already have an account? <a href="">Click Here</a></h4>
+                <h4 class="Login_Anchor">Already have an account? <a href="{{ route('login')}}">Click Here</a></h4>
             </section>
 
         </div>
