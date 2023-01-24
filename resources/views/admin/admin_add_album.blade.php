@@ -42,7 +42,7 @@
             <input type="file" class="form-control-file" id="input-album-cover" name="input-album-cover">
 
             <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="submit" class="btn btn-danger">Cancel</button>
+            <button type="button" onclick="history.back()" class="btn btn-danger">Cancel</button>
         </form>
     </section>
 
