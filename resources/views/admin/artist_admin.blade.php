@@ -28,9 +28,10 @@
                         </a>
                     </td>
                     <td>
-                        <a href="">
-                            <button class="table-adminbutton deletelyrics">Delete</button>
-                        </a>
+                        <form action="{{route('delete.artist', $artist->id)}}" method="POST">
+                            @csrf
+                            <button type="submit" class="table-adminbutton deletelyrics">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
