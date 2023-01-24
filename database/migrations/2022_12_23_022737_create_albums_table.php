@@ -15,10 +15,10 @@ class CreateAlbumsTable extends Migration
     {
         Schema::create('albums', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('artist_id');
-            $table->foreign('artist_id')->references('id')->on('artists')->onDelete('cascade')->onDelete('no action');
+            $table->unsignedBigInteger('artist_id')->nullable();
+            $table->foreign('artist_id')->references('id')->on('artists')-> onDelete('CASCADE');
             $table->unsignedBigInteger('album_type_id');
-            $table->foreign('album_type_id')->references('id')->on('album_types')->onDelete('no action');
+            $table->foreign('album_type_id')->references('id')->on('album_types')->onDelete('NO ACTION');
             $table->string('title');
             $table->date('release_date');
             $table->longText('description');

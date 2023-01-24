@@ -15,10 +15,10 @@ class CreateEditArtistRequestsTable extends Migration
     {
         Schema::create('edit_artist_requests', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('no action');
-            $table->unsignedBigInteger('artist_id');
-            $table->foreign('artist_id')->references('id')->on('artists')->onDelete('no action');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
+            $table->unsignedBigInteger('artist_id')->nullable();
+            $table->foreign('artist_id')->references('id')->on('artists')->onDelete('CASCADE');
             $table->longText('body');
             $table->tinyInteger('status');
             $table->timestamps();
