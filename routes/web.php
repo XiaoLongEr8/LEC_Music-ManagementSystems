@@ -33,9 +33,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/auth/redirect', [LoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/auth/google/callback', [LoginController::class, 'handleGoogleCallback'])->name('google.login');
 
-Route::get('/add-song', function() {
-    return view('admin.admin_add_song');
-});
+Route::get('/add-song', [SongController::class, 'redirectCreate']);
 
 Route::get('/add-artist', function() {
     return view('admin.admin_add_artist');

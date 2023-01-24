@@ -16,19 +16,12 @@
             <label for="input-song-title">Title</label>
             <input type="text" class="form-control" id="input-song-title" placeholder="Enter Title" name="input-song-title">
 
-            <label for="input-song-artist">Artist</label>
-            <select id="input-song-artist" class="form-control" name="input-song-artist">
-                {{-- @foreach($song as $data)
-                    <option value={{$data->artist->id}}>{{$data->artist->fullname}}</option>
-                @endforeach --}}
-            </select>
-
             <div id="input-song">
                 <label for="input-song-genre">Genre</label>
                 <select id="input-song-genre" class="form-control" name="input-song-genre[]">
-                    {{-- @foreach($song as $data)
-                        <option value={{$data->genre->id}}>{{$data->genre->name}}</option>
-                    @endforeach --}}
+                    @foreach($genres as $genre)
+                        <option value={{$genre->id}}>{{$genre->name}}</option>
+                    @endforeach
                 </select>
             </div>
 
@@ -51,9 +44,9 @@
 
             <label for="input-song-album">Album</label>
             <select id="input-song-album" class="form-control" name="input-song-album">
-                {{-- @foreach($song as $data)
-                    <option value={{$data->album->id}}>{{$data->album->title}}</option>
-                @endforeach --}}
+                @foreach($albums as $album)
+                    <option value={{$album->id}}>{{$album->title}}</option>
+                @endforeach
             </select>
 
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -64,7 +57,7 @@
 
 </section>
 
-{{-- <script>
+<script>
     document.getElementById('btn_add').addEventListener('click', function() {
         var select = document.createElement('select');
             select.id = "extra";
@@ -72,10 +65,10 @@
             select.name = 'input-song-genre[]';
             select.required = true;
 
-        @foreach ($song as $data)
+        @foreach ($genres as $genre)
             var option = document.createElement('option');
-                option.value = '{{$data->genre->id}}';
-                option.text = '{{$data->genre->name}}';
+                option.value = '{{$genre->id}}';
+                option.text = '{{$genre->name}}';
                 select.appendChild(option);
         @endforeach
 
@@ -88,7 +81,7 @@
 
         last.remove();
     });
-</script> --}}
+</script>
 
 {{-- Dummy Java yg bekerja --}}
 {{-- <script>
@@ -114,7 +107,7 @@
     var last = document.getElementById("extra");
 
     last.remove();
-});
+    });
 </script> --}}
 
 @endsection

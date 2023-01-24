@@ -30,7 +30,7 @@
                     </button>
                 </form>
                 <a class="navbar_profile_picture_container" href="{{route('profile')}}">
-                    <img src="{{ asset('image/ProfilePic.jpg') }}" alt="" class="navbar_profile_picture">
+                    <img src="{{ auth()->user()->profile_pic ? asset('user/'.auth()->user()->profile_pic) : asset('image/ProfilePic.jpg') }}" alt="" class="navbar_profile_picture">
                 </a>
             </section>
         @else
