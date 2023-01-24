@@ -63,7 +63,7 @@
         @endif
 
         <section class="btn_request_container separated_container">
-            <form action="">
+            <form action="{{route('song.create.req')}}">
                 <button class="btn_request">Request Song</button>
             </form>
         </section>
