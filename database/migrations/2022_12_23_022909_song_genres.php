@@ -16,9 +16,9 @@ class SongGenres extends Migration
         Schema::create('song_genres', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('genre_id');
-            $table->foreign('genre_id')->references('id')->on('genres');
+            $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
             $table->unsignedBigInteger('song_id');
-            $table->foreign('song_id')->references('id')->on('songs');
+            $table->foreign('song_id')->references('id')->on('songs')->onDelete('cascade');
             $table->timestamps();
         });
     }
