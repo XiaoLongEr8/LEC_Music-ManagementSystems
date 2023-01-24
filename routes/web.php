@@ -66,7 +66,8 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/add-song', [SongController::class, 'redirectCreate'])->name('redirect.create.song');
     Route::post('/add-song', [SongController::class, 'create'])->name('create.song');
     Route::post('/delete-song/{id}', [SongController::class, 'destroy'])->name('delete.song');
-    Route::post('/edit-song/{id}', [SongController::class, 'edit'])->name('edit.song');
+    Route::get('/edit-song/{id}', [SongController::class, 'redirectEdit'])->name('redirect.edit.song');
+    Route::patch('/edit-song', [SongController::class, 'edit'])->name('edit.song');
 
     Route::get('/add-artist', [ArtistController::class, 'redirectCreate'])->name('redirect.create.artist');
     Route::post('/add-artist', [ArtistController::class, 'create'])->name('create.artist');

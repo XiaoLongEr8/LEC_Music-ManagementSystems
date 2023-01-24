@@ -117,6 +117,23 @@ class SongController extends Controller
         return redirect()->route('admin.songs');
     }
 
+    public function redirectEdit($id){
+        $song = Song::where('id', $id)->with('album', 'genres')->first();
+
+        if(!$song){
+            return back();
+        }
+
+        $genres = Genre::select(['id', 'name'])->get();
+        $albums = Album::select(['id', 'artist_id', 'title'])->with([
+            'artist' => function($query){
+                $query->select([ 'id', 'fullname']);
+            }
+        ])->get();
+
+        return view('admin.admin_edit_song', compact('genres', 'albums', 'song'));
+    }
+
     public function edit(Request $request){
         $song = Song::where('id', $request->id)->first();
         if(!$song){
@@ -124,12 +141,21 @@ class SongController extends Controller
         }
 
         $request->validate([
-            'album_id' => ['required', 'exists:album,id'],
+            'genres' => ['required', 'array'],
+            'album_id' => ['required', 'exists:albums,id'],
             'title' => ['required', 'string', 'max:100'],
             'description' => ['required', 'string', 'min:10', 'max:1000'],
             'lyrics' => ['required', 'string', 'min:10', 'max:7000'],
             'view_count' => ['required', 'numeric']
         ]);
+
+        $genres = $request->get('genres');
+        foreach ($genres as $genre) {
+            $exists = Genre::where('id', $genre)->exists();
+            if (!$exists) {
+                return back();
+            }
+        }
 
         $song->update([
             'album_id' => $request->album_id,
@@ -139,7 +165,10 @@ class SongController extends Controller
             'view_count' => $request->view_count
         ]);
 
-        return response()->json($song);
+        $song->genres()->detach();
+        $song->genres()->attach($genres);
+
+        return redirect()->route('admin.songs');
     }
 
     public function destroy($id){

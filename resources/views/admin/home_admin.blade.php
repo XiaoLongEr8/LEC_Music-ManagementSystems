@@ -32,7 +32,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href="{{route('song.show', $song->id)}}">
+                            <a href="{{route('redirect.edit.song', $song->id)}}">
                                 <button class="table-adminbutton editlyrics">Edit</button>
                             </a>
                         </td>
