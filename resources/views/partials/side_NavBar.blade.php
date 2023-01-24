@@ -1,12 +1,12 @@
 <nav class="side_navbar">
     <div class="navigation_option">
-        <a href="">
+        <a href="{{route('admin.songs')}}">
             <div class="side_navigation">
                 <ion-icon name="home"></ion-icon>
                 <p class="side_navigation_text">Home</p>
             </div>
         </a>
-        <a href="">
+        <a href="{{route('admin.artists')}}">
             <div class="side_navigation">
                 <ion-icon name="people"></ion-icon>
                 <p class="side_navigation_text">Artist</p>
