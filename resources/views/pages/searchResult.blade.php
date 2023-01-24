@@ -63,7 +63,9 @@
         @endif
 
         <section class="btn_request_container separated_container">
-            <button class="btn_request">Request Song</button>
+            <form action="">
+                <button class="btn_request">Request Song</button>
+            </form>
         </section>
 
     </main>

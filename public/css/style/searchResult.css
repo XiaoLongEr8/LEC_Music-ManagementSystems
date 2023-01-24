@@ -104,9 +104,13 @@ button {
     justify-content: center;
 }
 
+.btn_request_container form {
+    width: 28%;
+}
+
 .btn_request {
     height: 3em;
-    width: 28%;
+    width: 100%;
 
     border: none;
     border-radius: 15px;
