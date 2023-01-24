@@ -27,7 +27,7 @@
                     @foreach ($results as $result)
                         <article class="result_card_container">
                             <section class="left_content">
-                                <img src="{{ $result->album_id ? $result->album->cover_image : $result->profile_pic }}"
+                                <img src="{{ $result->album_id ? asset($result->album->cover_image) : asset($result->profile_pic) }}"
                                     alt="this is image" class="song_album_img">
                                 <div class="title_author_content">
                                     <h2>{{ $result->name }}</h2>
