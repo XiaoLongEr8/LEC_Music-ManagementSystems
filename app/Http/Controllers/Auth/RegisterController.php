@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
-    public function goToRegister()
+    public function redirectRegister()
     {
         return view('pages.register');
     }

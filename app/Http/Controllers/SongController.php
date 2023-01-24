@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
 use App\Models\Artist;
+use App\Models\Genre;
 use App\Models\Song;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -81,6 +83,13 @@ class SongController extends Controller
 
         $song->delete();
         return back();
+    }
+
+    public function redirectCreate(){
+        $genres = Genre::select(['id', 'name'])->get();
+        $albums = Album::select(['id', 'title'])->get();
+
+        return view('admin.admin_add_song', compact('genres', 'albums'));
     }
 
     public function edit(Request $request){

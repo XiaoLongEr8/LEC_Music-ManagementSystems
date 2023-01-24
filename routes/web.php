@@ -25,9 +25,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Authentication
-Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/login', [LoginController::class, 'redirectLogin'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login');
-Route::get('/register', [RegisterController::class, 'goToRegister'])->name('register');
+Route::get('/register', [RegisterController::class, 'redirectRegister'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/auth/redirect', [LoginController::class, 'redirectToGoogle'])->name('google.redirect');
@@ -56,15 +56,15 @@ Route::middleware(['auth'])->group(function () {
         return view('pages.requestSong');
     })->name('song.create.req');
 
-    Route::get('/request/edit-song/{id}', [SongEditReqController::class, 'goToForm'])->name('song.edit.req');
+    Route::get('/request/edit-song/{id}', [SongEditReqController::class, 'redirectForm'])->name('song.edit.req');
 
-    Route::get('/request/edit-artist/{id}', [ArtistEditReqController::class, 'goToForm'])->name('artist.edit.req');
+    Route::get('/request/edit-artist/{id}', [ArtistEditReqController::class, 'redirectForm'])->name('artist.edit.req');
 
     Route::post('/request/create-song', [SongCreateReqController::class, 'create'])->name('create.song.req');
     Route::post('/request/edit-song', [SongEditReqController::class, 'create'])->name('edit.song.req');
     Route::post('/request/edit-artist', [ArtistEditReqController::class, 'create'])->name('edit.artist.req');
 
-    Route::get('/profile', [UserController::class, 'goToProfile'])->name('profile');
+    Route::get('/profile', [UserController::class, 'redirectProfile'])->name('profile');
     Route::put('/profile/edit/pic', [UserController::class, 'editPic'])->name('profile.edit.pic');
     Route::put('/profile/edit/info', [UserController::class, 'edit'])->name('profile.edit.info');
 });

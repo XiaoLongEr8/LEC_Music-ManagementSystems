@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function goToProfile(){
+    public function redirectProfile(){
         if(!Auth::check()){
             return back();
         }
