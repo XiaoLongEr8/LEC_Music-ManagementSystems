@@ -45,6 +45,10 @@
             </div>
 
             <form action="{{ route('login') }}" method="POST">
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">{{ $error }}</div>
+                @endforeach
+
                 @csrf
                 <section class="input_Row_Section">
                     {{-- @if ($errors->any())
