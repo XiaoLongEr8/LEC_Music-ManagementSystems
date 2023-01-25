@@ -23,15 +23,11 @@ class SongCreateReqController extends Controller
             'status' => 0
         ]);
 
-        return response()->json($form);
+        return redirect('/');
     }
 
     public function displayAll(){
         $song_creates = CreateSongRequest::paginate(5);
         return response()->json($song_creates);
-    }
-
-    public function changeStatus(Request $request){
-
     }
 }

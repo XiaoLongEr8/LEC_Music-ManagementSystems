@@ -31,7 +31,7 @@ class ArtistEditReqController extends Controller
             'status' => 0
         ]);
 
-        return response()->json($form);
+        return redirect('/');
     }
 
     public function redirectForm($id){
