@@ -55,7 +55,7 @@ class UserController extends Controller
             'fullname' => ['required'],
             'username' => ['required'],
             'phone_num' => ['required', 'string', 'regex:/^(^\+62|62|^08)(\d{3,4}-?){2}\d{3,4}$/'],
-            'email' => ['required', 'string', 'email', 'unique:users,email,'.$user->id]
+            'email' => ['required', 'string', 'email:dns', 'unique:users,email,'.$user->id]
         ]);
 
         $user->update([
