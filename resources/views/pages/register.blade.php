@@ -29,6 +29,9 @@
             </section>
 
             <form action="{{route('register')}}" method="POST">
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">{{ $error }}</div>
+                @endforeach
                 @csrf
                 <section class="input_Row_Section">
                     <div class="input_Column_Section">

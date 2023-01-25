@@ -56,6 +56,10 @@
         <div class="left_container">
             <h1 class="update_title">Update Profile</h1>
             <form action="{{route('profile.edit.info')}}" method="POST">
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">{{ $error }}</div>
+                @endforeach
+
                 @csrf
                 @method('PUT')
                 <section class="input_Row_Section">
