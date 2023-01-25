@@ -21,7 +21,7 @@ class RegisterController extends Controller
         $request->validate([
             'fullname' => ['required', 'string'],
             'username' => ['required', 'string'],
-            'email' => ['required', 'string', 'email', 'unique:users,email'],
+            'email' => ['required', 'string', 'email:dns', 'unique:users,email'],
             'phone_num' => ['required', 'string', 'regex:/^(\+62|62)?[\s-]?0?8[1-9]{1}\d{1}[\s-]?\d{4}[\s-]?\d{2,5}$/'],
             'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
