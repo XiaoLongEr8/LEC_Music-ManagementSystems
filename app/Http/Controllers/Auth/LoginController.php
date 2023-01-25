@@ -47,7 +47,7 @@ class LoginController extends Controller
             return redirect('/')->withCookie($cookie);
         }
 
-        return redirect('/');
+        return redirect()->intended();
     }
 
     public function redirectToGoogle(){
