@@ -58,7 +58,7 @@
             <div class="song_card_container">
                 {{-- Looping this card layout when integration with BE --}}
                 @foreach ($latest as $song)
-                    <a href="{{route('artist.show', ['id'=>$song->id])}}" style="color:black; text-decoration:none;">
+                    <a href="{{route('song.show', ['id'=>$song->id])}}" style="color:black; text-decoration:none;">
                         <article class="song_card">
                             <img src="{{ asset($song->album->cover_image) }}" alt="Album Cover" class="song_album_img">
                             {{-- <div class="song_album_img"></div> --}}
