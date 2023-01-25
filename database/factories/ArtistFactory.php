@@ -21,7 +21,7 @@ class ArtistFactory extends Factory
         }
         return [
             'fullname' => $name,
-            'profile_pic' => $this->faker->imageUrl(400, 400, 'people'),
+            'profile_pic' => 'https://picsum.photos/400',
             'bio' => $this->faker->paragraph,
             'nationality' => $this->faker->country
         ];

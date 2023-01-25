@@ -19,7 +19,7 @@
     <section class="main_container">
         <div class="right_container">
             <h1>My Profile</h1>
-            <img src="{{auth()->user()->profile_pic ? asset('user/'.auth()->user()->profile_pic): asset('image/profile.svg')}}" alt="not found" class="profile_picture">
+            <img src="{{auth()->user()->profile_pic ? asset(auth()->user()->profile_pic): asset('image/profile.svg')}}" alt="not found" class="profile_picture">
             <h4>Welcome {{ auth()->user()->username }}</h4>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -55,9 +55,6 @@
         </div>
         <div class="left_container">
             <h1 class="update_title">Update Profile</h1>
-            @if($errors->any())
-                {!! implode('', $errors->all('<div>:message</div>')) !!}
-            @endif
             <form action="{{route('profile.edit.info')}}" method="POST">
                 @csrf
                 @method('PUT')

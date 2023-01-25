@@ -17,7 +17,7 @@
         <div class="artist_detail separated_container">
             <div class="artist_detail_top_container">
                 <div class="artist_picture">
-                    <img src="{{$artist->profile_pic}}" alt="">
+                    <img src="{{asset($artist->profile_pic)}}" alt="">
                 </div>
                 <div class="artist_info">
                     <div class="name_artist_container">

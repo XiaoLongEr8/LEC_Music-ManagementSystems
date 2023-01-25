@@ -12,6 +12,12 @@
 
     <section class="admin-form">
         <form action="" method="">
+            @csrf
+
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger">{{ $error }}</div>
+            @endforeach
+
             <label for="input-album-name">Title</label>
             <input type="text" class="form-control" id="input-album-name" placeholder="Enter Title" name="input-album-name">
 
@@ -42,7 +48,7 @@
             <input type="file" class="form-control-file" id="input-album-cover" name="input-album-cover">
 
             <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="submit" class="btn btn-danger">Cancel</button>
+            <button type="button" onclick="history.back()" class="btn btn-danger">Cancel</button>
         </form>
     </section>
 

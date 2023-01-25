@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function goToProfile(){
+    public function redirectProfile(){
         if(!Auth::check()){
             return back();
         }
@@ -28,7 +28,7 @@ class UserController extends Controller
             'profile_pic' => ['required', 'image', 'max:5000']
         ]);
 
-        $user_path = storage_path('app/user/'.$user->profile_pic);
+        $user_path = storage_path('app/'.$user->profile_pic);
         if (file_exists($user_path)) {
             unlink($user_path);
         }
@@ -38,7 +38,7 @@ class UserController extends Controller
         Storage::putFileAs('user', $path, $path_name);
 
         $user->update([
-            'profile_pic' => $path_name
+            'profile_pic' => 'user/' . $path_name
         ]);
 
         return back();

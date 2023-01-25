@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Cookie;
 
 class LoginController extends Controller
 {
-    public function login(){
+    public function redirectLogin(){
         if(Auth::check()){
             return redirect('/');
         }

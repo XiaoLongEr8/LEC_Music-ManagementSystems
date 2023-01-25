@@ -43,7 +43,7 @@ class AlbumFactory extends Factory
             'release_date' => $this->faker->date('Y-m-d', 'now'),
             'description' => $this->faker->paragraph,
             'contributors' => $contributors,
-            'cover_image' => $this->faker->imageUrl(400, 400),
+            'cover_image' => 'https://picsum.photos/400',
             'created_at' => Carbon::now()
         ];
     }

@@ -32,23 +32,30 @@
                             </a>
                         </td>
                         <td>
-                            <a href="">
+                            <a href="{{route('redirect.edit.song', $song->id)}}">
                                 <button class="table-adminbutton editlyrics">Edit</button>
                             </a>
                         </td>
                         <td>
-                            <a href="">
-                                <button class="table-adminbutton deletelyrics">Delete</button>
-                            </a>
+                            <form action="{{route('delete.song', $song->id)}}" method="POST">
+                                @csrf
+                                <button type="submit" class="table-adminbutton deletelyrics">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
             </table>
             {{$songs->links()}}
-            <a href="">
+            <a href="{{route('redirect.create.song')}}">
                 <button class="add-new-item">
                     <ion-icon name="add-outline"></ion-icon>
                     <p>Add New Song</p>
+                </button>
+            </a>
+            <a href="{{route('redirect.create.album')}}">
+                <button class="add-new-item">
+                    <ion-icon name="add-outline"></ion-icon>
+                    <p>Add New Album</p>
                 </button>
             </a>
         </div>

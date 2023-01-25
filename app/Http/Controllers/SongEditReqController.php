@@ -34,7 +34,7 @@ class SongEditReqController extends Controller
         return response()->json($form);
     }
 
-    public function goToForm($id){
+    public function redirectForm($id){
         $song = Song::where('id', $id)->select(['id', 'title'])->first();
         if(!$song){
             return back();

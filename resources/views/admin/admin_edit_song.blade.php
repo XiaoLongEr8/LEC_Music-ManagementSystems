@@ -7,28 +7,31 @@
 <section class="admin-add-song">
 
     <section class="admin-song-title">
-        <h2>Add New Song</h2>
+        <h2>Edit Song</h2>
     </section>
 
     <section class="admin-form">
 
-        <form action="{{route('create.song')}}" method="POST">
+        <form action="{{route('edit.song')}}" method="POST">
             @csrf
+            @method('PATCH')
 
             @foreach ($errors->all() as $error)
                 <div class="alert alert-danger">{{ $error }}</div>
             @endforeach
 
             <label for="input-song-title">Title</label>
-            <input type="text" class="form-control" id="input-song-title" placeholder="Enter Title" name="title">
+            <input type="text" class="form-control" id="input-song-title" placeholder="Enter Title" name="title" value="{{$song->title}}">
 
             <div id="input-song">
                 <label for="input-song-genre">Genre</label>
-                <select id="input-song-genre" class="form-control" name="genres[]">
-                    @foreach($genres as $genre)
-                        <option value={{$genre->id}}>{{$genre->name}}</option>
-                    @endforeach
-                </select>
+                @foreach ($song->genres as $song_genre)
+                    <select id="{{$loop->index > 0 ? 'extra' : 'input-song-genre'}}" class="form-control" name="genres[]">
+                        @foreach($genres as $genre)
+                            <option value={{$genre->id}} {{$song_genre->id == $genre->id?'selected':''}}>{{$genre->name}}</option>
+                        @endforeach
+                    </select>
+                @endforeach
             </div>
 
             <div id="genre-button" style="margin-bottom: 2rem">
@@ -37,20 +40,22 @@
             </div>
 
             <label for="input-song-description">Description</label>
-            <textarea class="form-control" id="input-description" rows="3" name="description"></textarea>
+            <textarea class="form-control" id="input-description" rows="3" name="description">{{$song->description}}</textarea>
 
             <label for="input-song-view">Views</label>
-            <input type="number" class="form-control" id="input-song-view" placeholder="Enter Number of Views" name="view_count">
+            <input type="number" class="form-control" id="input-song-view" placeholder="Enter Number of Views" name="view_count" value="{{$song->view_count}}">
 
             <label for="input-song-lyric">Song Lyric</label>
-            <textarea class="form-control" id="input-song-lyric" rows="8" name="lyrics"></textarea>
+            <textarea class="form-control" id="input-song-lyric" rows="8" name="lyrics">{{$song->lyrics}}</textarea>
 
             <label for="input-song-album">Album</label>
             <select id="input-song-album" class="form-control" name="album_id">
                 @foreach($albums as $album)
-                    <option value={{$album->id}}>{{$album->title}} by {{$album->artist->fullname}}</option>
+                    <option value={{$album->id}} {{$song->album_id == $album->id?'selected':''}}>{{$album->title}} by {{$album->artist->fullname}}</option>
                 @endforeach
             </select>
+
+            <input type="hidden" name="id" value="{{$song->id}}">
 
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="button" onclick="history.back()" class="btn btn-danger">Cancel</button>

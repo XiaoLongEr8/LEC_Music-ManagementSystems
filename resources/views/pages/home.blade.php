@@ -60,7 +60,7 @@
                 @foreach ($latest as $song)
                     <a href="{{route('artist.show', ['id'=>$song->id])}}" style="color:black; text-decoration:none;">
                         <article class="song_card">
-                            <img src="{{ $song->album->cover_image }}" alt="Album Cover" class="song_album_img">
+                            <img src="{{ asset($song->album->cover_image) }}" alt="Album Cover" class="song_album_img">
                             {{-- <div class="song_album_img"></div> --}}
                             <h1 class="song_title">{{ $song->title }}</h1>
                             <h6 class="song_author">{{ $song->album->artist->fullname }}</h6>

@@ -29,8 +29,8 @@
                         Logout
                     </button>
                 </form>
-                <a class="navbar_profile_picture_container" href="#">
-                    <img src="{{ asset('image/ProfilePic.jpg') }}" alt="" class="navbar_profile_picture">
+                <a class="navbar_profile_picture_container" href="{{auth()->user()->role == 2 ? route('admin.songs') : route('profile')}}">
+                    <img src="{{ auth()->user()->profile_pic ? asset(auth()->user()->profile_pic) : asset('image/ProfilePic.jpg') }}" alt="" class="navbar_profile_picture">
                 </a>
             </section>
         @else
