@@ -43,7 +43,7 @@
                 </tr>
                 @foreach ($artist->albums as $album)
                   <tr class="artist_album">
-                    <td class="album_cover_container"><img src={{asset($album->cover_image)}} alt="" class="album_cover"></td>
+                    <td class="album_cover_container"><img src='{{asset($album->cover_image)}}' alt="" class="album_cover"></td>
                     <td class="album_name"><h3>{{$album->title}}</h3></td>
                     <td class="album_release_date"><h3>{{$album->artistDetailRelease()}}</h3></td>
                 @endforeach
